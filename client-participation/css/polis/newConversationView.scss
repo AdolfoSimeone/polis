@@ -1,0 +1,233 @@
+/*----------------------- IMPORT -----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.participation{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-decoration:none;
+    font-family: 'Rubik';
+    font-size: 16px;
+    line-height:1.5rem;
+    color: #000;
+}
+
+img{
+    display: block;
+}
+
+body.participation{
+    max-width:768px;
+    margin:auto;
+}
+
+.container{
+    background-color: #EAEDF2;
+}
+
+h1{
+    margin: 1.5rem 2rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+header p{
+    margin: 1.5rem 2rem;
+}
+
+.combox{
+    margin:1.5rem;
+    padding:1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap:wrap;
+    font-size: 13px;
+    line-height: 16px;
+    color:#494949;
+    /* border: 1px dotted #56b8ff; */
+    border-radius: 5px;
+    background-color: #FEFEFE;
+    line-height: 1rem;
+    font-size: 0.8rem;
+}
+
+.combox a, .combox li{
+    line-height: 1rem;
+    font-size: 0.8rem;
+    color:#494949;
+}
+
+.votebox{
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #fff;
+    margin:0.5rem;
+    padding:0.5rem;
+
+}
+
+.avatar{
+  height:48px;
+  width:48px;
+  background-color:#C4C4C4;
+  flex-basis:auto;
+  flex-shrink: 0;
+  margin: 0 1rem 0 0;
+}
+
+.bar{
+    margin:1.5rem 1.5rem 0.5rem 1.5rem;
+    background-color: #CCCCCC;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    position:relative;
+    height:24px;
+}
+
+.bar .filling{
+    background: #84E499;
+    box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.05);
+    z-index:2;
+}
+
+.bar p{
+    color:#fff;
+    font-size:0.8rem;
+    font-weight:500;
+    position:absolute;
+    right:1rem;
+    top:-0.8rem;
+    z-index:10;
+}
+
+.votebox-top{
+    display:flex;
+    justify-content:space-between;
+    align-items: flex-start;
+}
+
+.statement{
+    font-weight:600;
+    padding: 2rem;
+}
+
+.userbox{
+    justify-content:space-between;
+}
+
+.buttonbox{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+    margin:0 -0.5rem;
+}
+
+
+
+.button{
+    border: 1px solid;
+    border-radius:5px;
+    background-color:#f8f8f8;
+    line-height:1rem;
+    font-size:0.8rem;
+    font-weight:500;
+    text-align:center;
+    min-height:48px;
+    padding:0.5rem 1rem;
+    display:flex;
+    align-content: center;
+    margin:0.5rem;
+    flex-shrink: 3;
+
+}
+
+.button a{
+    text-align: center;
+}
+
+.votebox-top .button{
+    background-color:#f3f3f3;
+    font-weight:500;
+    color:#797979;
+    margin:0 0 1rem 1rem;
+    border:none;
+    height:48px
+}
+
+.votebox-top .button a{
+    color:#797979;
+    text-align: center;
+}
+
+.postbox {
+    flex-wrap:nowrap;
+    }
+
+
+.button.pro{
+    border-color: #84E499;
+}
+
+.button.contra{
+    border-color: #E48484;
+}
+
+.button.neutral{
+    border-color: #CCCCCC;
+}
+
+
+/*--------------------------------------------------------*/
+
+@media(min-width:440px){
+
+    .votebox{
+        padding:1rem;
+    }
+
+}
+
+
+/*--------------------------------------------------------*/
+
+@media(min-width:560px){
+
+h1, header p {
+margin:0.5rem 4rem;
+   }
+.combox{
+    margin:1.5rem 4rem;
+    padding:2rem;
+ }   
+
+ .votebox{
+     margin:2rem;
+     padding:2rem;
+ }
+
+ .avatar{
+    height:64px;
+    width:64px;
+ }
+.buttonbox-top{
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+
+ .votebox-top .button{
+  margin-left:1.5rem;
+ }
+
+ .buttonbox{
+    flex-wrap: nowrap;
+    align-items:center;
+ }
+
+ .bar{
+     margin:2rem 4rem;
+ }
+
+}
