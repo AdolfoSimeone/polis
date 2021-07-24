@@ -2,7 +2,6 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
-      // 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
       "'Space Mono', monospace",
     heading: 'inherit',
     monospace: "'Space Mono', monospace"

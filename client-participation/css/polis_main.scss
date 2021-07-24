@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans JP", Arial, sans-serif;
   // font-size: 14px;
   line-height: 1.42857;
   color: #000;
@@ -18,7 +18,7 @@ body {
 }
 
 textarea {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans JP", Arial, sans-serif;
 }
 
 @import "bootstrap_config/bootstrap";
@@ -33,7 +33,7 @@ textarea {
 // 3KB
 @import "conversationView";
 @import "newConversationView";
-@import "pca_vis";
+
 
 // TODO set the bootstrap variable instead.
 .navbar-default {
@@ -48,4 +48,18 @@ textarea {
   > .active {
     display: block;
   }
+}
+
+#helpTextWelcome, #helpTextGroups{
+  color: black;
+  padding: 5px 0px 5px 0px;
+  font-family: "Noto Serif JP", Arial, serif;
+  font-style: italic;
+}
+
+h2 + p {
+  border-left: 4px solid #2980b9;
+  padding-left: 10px;
+  font-family: chaparral-pro;
+  word-wrap:break-word;
 }
