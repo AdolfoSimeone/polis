@@ -1304,7 +1304,6 @@ helpersInitialized.then(function(o) {
   app.get(/^\/pdf$/, makeRedirectorTo("/23mymwyhkn")); // pdf 2017
   app.get(/^\/nabi$/, makeRedirectorTo("/8ufpzc6fkm")); // 
 
-
   app.get(/^\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // conversation view
   app.get(/^\/explore\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // power view
   app.get(/^\/share\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // share view
