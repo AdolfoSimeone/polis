@@ -133,6 +133,10 @@ const sql_reports = sql.define({
   ],
 });
 
+//TODO declare new tables here
+//user_score
+//messages (TBD name and structure appropriate for multiple events)
+
 module.exports = {
   sql_conversations,
   sql_comments,

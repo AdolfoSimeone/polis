@@ -41,6 +41,7 @@ module.exports = function(params) {
   var commentsPath = "api/v3/comments";
   var nextCommentPath = "api/v3/nextComment";
   var finishedTutorialPath = "api/v3/tutorial";
+  //var userScorePath = "api/v3/userScore";
 
   var pcaPath = "api/v3/math/pca2";
   var votesFamousPath = "api/v3/votes/famous";
@@ -339,6 +340,17 @@ module.exports = function(params) {
   function clearComment(tid) {
     delete commentsToVoteOn[tid];
   }
+  /*
+  function saveUserScore() {
+    var params = {};
+    return polisPost(userScorePath, params);
+  }
+
+  function getUserScore() {
+    var params = {};
+    return polisGet(userScorePath, params);
+  }
+  */
 
   function processPidResponse(returnedPid) {
     if (returnedPid !== myPid) {

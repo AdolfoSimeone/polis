@@ -15,13 +15,12 @@ app.set('trust proxy', 'uniquelocal');
 
 console.log('init 1');
 
-var helpersInitialized = new Promise(function(resolve, reject) {
-  resolve(server.initializePolisHelpers());
-});
+var helpersInitialized = async () => {
+  return server.initializePolisHelpers();
+};
 
 
-
-helpersInitialized.then(function(o) {
+helpersInitialized().then((o) =>{
   const {
     addCorsHeader,
     auth,
@@ -128,8 +127,6 @@ helpersInitialized.then(function(o) {
     handle_GET_xids,
     handle_GET_zinvites,
 
-
-
     handle_POST_auth_deregister,
     handle_POST_auth_facebook,
     handle_POST_auth_login,
@@ -178,6 +175,7 @@ helpersInitialized.then(function(o) {
     handle_POST_waitinglist,
     handle_POST_xidWhitelist,
     handle_POST_zinvites,
+    
     handle_PUT_comments,
     handle_PUT_conversations,
     handle_PUT_participants_extended,
@@ -220,113 +218,12 @@ helpersInitialized.then(function(o) {
   // app.disable('etag'); // seems to be eating CPU, and we're not using etags yet. https://www.dropbox.com/s/hgfd5dm0e29728w/Screenshot%202015-06-01%2023.42.47.png?dl=0
 
 
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  //
-  //             BEGIN MIDDLEWARE
-  //
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
+  // START API routes
 
-  app.use(function(req, res, next) {
-    console.log("before");
-    console.log(req.body);
-    console.log(req.headers);
-    next();
-  });
+  require('./src/routes')(app, o);
 
-  app.use(middleware_responseTime_start);
+  // END API routes
 
-  app.use(redirectIfNotHttps);
-  app.use(express.cookieParser());
-  app.use(express.bodyParser());
-  app.use(writeDefaultHead);
-  app.use(redirectIfWrongDomain);
-  app.use(redirectIfApiDomain);
-
-  if (devMode) {
-    app.use(express.compress());
-  } else {
-    // Cloudflare would apply gzip if we didn't
-    // but it's about 2x faster if we do the gzip (for the inbox query on mike's account)
-    app.use(express.compress());
-  }
-  app.use(middleware_log_request_body);
-  app.use(middleware_log_middleware_errors);
-
-  app.use(function(req, res, next) {
-    console.log("part2");
-    console.log(req.body);
-    console.log(req.headers);
-    next();
-  });
-
-  app.all("/api/v3/*", addCorsHeader);
-  app.all("/font/*", addCorsHeader);
-  app.all("/api/v3/*", middleware_check_if_options);
-
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  //
-  //             END MIDDLEWARE
-  //
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-  ////////////////////////////////////////////
-
-
-
-  app.get("/api/v3/math/pca",
-    handle_GET_math_pca);
-
-  app.get("/api/v3/math/pca2",
-    moveToBody,
-    redirectIfHasZidButNoConversationId, // TODO remove once
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('math_tick', getInt, assignToP),
-    wantHeader('If-None-Match', getStringLimitLength(1000), assignToPCustom('ifNoneMatch')),
-    handle_GET_math_pca2);
-
-  app.get("/api/v3/math/correlationMatrix",
-    moveToBody,
-    // need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('report_id', getReportIdFetchRid, assignToPCustom('rid')),
-    want('math_tick', getInt, assignToP, -1),
-    handle_GET_math_correlationMatrix);
-
-
-
-  app.get("/api/v3/dataExport",
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('conversation_id', getStringLimitLength(1, 1000), assignToP),
-    want('format', getStringLimitLength(1, 100), assignToP),
-    want('unixTimestamp', getStringLimitLength(99), assignToP),
-    handle_GET_dataExport);
-
-  app.get("/api/v3/dataExport/results",
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('conversation_id', getStringLimitLength(1, 1000), assignToP),
-    want('filename', getStringLimitLength(1, 1000), assignToP),
-    handle_GET_dataExport_results);
 
   // TODO doesn't scale, stop sending entire mapping.
   app.get("/api/v3/bidToPid",
@@ -349,19 +246,6 @@ helpersInitialized.then(function(o) {
     need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
     want('math_tick', getInt, assignToP, 0),
     handle_GET_bid);
-
-  app.post("/api/v3/auth/password",
-    need('pwresettoken', getOptionalStringLimitLength(1000), assignToP),
-    need('newPassword', getPasswordWithCreatePasswordRules, assignToP),
-    handle_POST_auth_password);
-
-  app.post("/api/v3/auth/pwresettoken",
-    need('email', getEmail, assignToP),
-    handle_POST_auth_pwresettoken);
-
-  app.post("/api/v3/auth/deregister",
-    want("showPage", getStringLimitLength(1, 99), assignToP),
-    handle_POST_auth_deregister);
 
   app.get("/api/v3/zinvites/:zid",
     moveToBody,
@@ -390,23 +274,6 @@ helpersInitialized.then(function(o) {
     handle_GET_dummyButton);
 
 
-  app.get("/api/v3/conversations/preload",
-    moveToBody,
-    need('conversation_id', getStringLimitLength(1, 1000), assignToP), // we actually need conversation_id to build a url
-    handle_GET_conversationPreloadInfo);
-
-  app.get("/api/v3/conversations/recently_started",
-    auth(assignToP),
-    moveToBody,
-    want('sinceUnixTimestamp', getStringLimitLength(99), assignToP),
-    handle_GET_conversationsRecentlyStarted);
-
-  app.get("/api/v3/conversations/recent_activity",
-    auth(assignToP),
-    moveToBody,
-    want('sinceUnixTimestamp', getStringLimitLength(99), assignToP),
-    handle_GET_conversationsRecentActivity);
-
   app.post("/api/v3/participants",
     auth(assignToP),
     need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
@@ -430,13 +297,6 @@ helpersInitialized.then(function(o) {
     need('conversation_id', getStringLimitLength(1, 1000), assignToP), // we actually need conversation_id to build a url
     need('email', getEmail, assignToP),
     handle_GET_notifications_unsubscribe);
-
-  app.post("/api/v3/convSubscriptions",
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need("type", getInt, assignToP),
-    need('email', getEmail, assignToP),
-    handle_POST_convSubscriptions);
 
   app.post("/api/v3/auth/login",
     need('password', getPassword, assignToP),
@@ -523,41 +383,6 @@ helpersInitialized.then(function(o) {
     auth(assignToP),
     handle_GET_facebook_delete);
 
-  app.post("/api/v3/auth/facebook",
-    enableAgid,
-    authOptional(assignToP),
-    want('fb_granted_scopes', getStringLimitLength(1, 9999), assignToP),
-    want('fb_friends_response', getStringLimitLength(1, 99999), assignToP),
-    want('fb_public_profile', getStringLimitLength(1, 99999), assignToP),
-    want('fb_email', getEmail, assignToP),
-    want('hname', getOptionalStringLimitLength(9999), assignToP),
-    want('provided_email', getEmail, assignToP),
-    want('conversation_id', getOptionalStringLimitLength(999), assignToP),
-    want('password', getPassword, assignToP),
-    need('response', getStringLimitLength(1, 9999), assignToP),
-    want("owner", getBool, assignToP, true),
-    handle_POST_auth_facebook);
-
-  app.post("/api/v3/auth/new",
-    want('anon', getBool, assignToP),
-    want('password', getPasswordWithCreatePasswordRules, assignToP),
-    want('password2', getPasswordWithCreatePasswordRules, assignToP),
-    want('email', getOptionalStringLimitLength(999), assignToP),
-    want('hname', getOptionalStringLimitLength(999), assignToP),
-    want('oinvite', getOptionalStringLimitLength(999), assignToP),
-    want('encodedParams', getOptionalStringLimitLength(9999), assignToP), // TODO_SECURITY we need to add an additional key param to ensure this is secure. we don't want anyone adding themselves to other people's site_id groups.
-    want('zinvite', getOptionalStringLimitLength(999), assignToP),
-    want('organization', getOptionalStringLimitLength(999), assignToP),
-    want('gatekeeperTosPrivacy', getBool, assignToP),
-    want('lti_user_id', getStringLimitLength(1, 9999), assignToP),
-    want('lti_user_image', getStringLimitLength(1, 9999), assignToP),
-    want('lti_context_id', getStringLimitLength(1, 9999), assignToP),
-    want('tool_consumer_instance_guid', getStringLimitLength(1, 9999), assignToP),
-    want('afterJoinRedirectUrl', getStringLimitLength(1, 9999), assignToP),
-    want("owner", getBool, assignToP, true),
-    handle_POST_auth_new);
-
-
   app.post("/api/v3/tutorial",
     auth(assignToP),
     need("step", getInt, assignToP),
@@ -583,7 +408,6 @@ helpersInitialized.then(function(o) {
     need('code', getOptionalStringLimitLength(999), assignToP),
     handle_GET_changePlanWithCoupon);
 
-
   // Just for testing that the new custom stripe form is submitting properly
   app.post("/api/v3/stripe_save_token",
     handle_POST_stripe_save_token);
@@ -594,11 +418,9 @@ helpersInitialized.then(function(o) {
     need('plan', getStringLimitLength(99), assignToP),
     handle_POST_stripe_upgrade);
 
-
   app.post("/api/v3/stripe_cancel",
     auth(assignToP),
     handle_POST_stripe_cancel);
-
 
   app.post("/api/v3/charge",
     auth(assignToP),
@@ -622,64 +444,6 @@ helpersInitialized.then(function(o) {
     want('report_id', getReportIdFetchRid, assignToPCustom('rid')),
     handle_GET_groupDemographics);
 
-  app.get("/api/v3/comments",
-    moveToBody,
-    authOptional(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('report_id', getReportIdFetchRid, assignToPCustom('rid')), // if you want to get report-specific info
-    want('tids', getArrayOfInt, assignToP),
-    want('moderation', getBool, assignToP),
-    want('mod', getInt, assignToP),
-    want('modIn', getBool, assignToP), // set this to true if you want to see the comments that are ptpt-visible given the current "strict mod" setting, or false for ptpt-invisible comments.
-    want('mod_gt', getInt, assignToP),
-    want('include_social', getBool, assignToP),
-    want('include_demographics', getBool, assignToP),
-    //    need('lastServerToken', _.identity, assignToP),
-    want('include_voting_patterns', getBool, assignToP, false),
-    resolve_pidThing('not_voted_by_pid', assignToP, "get:comments:not_voted_by_pid"),
-    resolve_pidThing('pid', assignToP, "get:comments:pid"),
-    handle_GET_comments);
-
-  // TODO probably need to add a retry mechanism like on joinConversation to handle possibility of duplicate tid race-condition exception
-  app.post("/api/v3/comments",
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('txt', getOptionalStringLimitLength(997), assignToP),
-    want('vote', getIntInRange(-1, 1), assignToP),
-    want("twitter_tweet_id", getStringLimitLength(999), assignToP),
-    want("quote_twitter_screen_name", getStringLimitLength(999), assignToP),
-    want("quote_txt", getStringLimitLength(999), assignToP),
-    want("quote_src_url", getUrlLimitLength(999), assignToP),
-    want("anon", getBool, assignToP),
-    want("is_seed", getBool, assignToP),
-    want('xid', getStringLimitLength(1, 999), assignToP),
-    resolve_pidThing('pid', assignToP, "post:comments"),
-    handle_POST_comments);
-
-
-  app.post("/api/v3/comments/slack",
-    auth(assignToP),
-    want('slack_team', getOptionalStringLimitLength(99), assignToP),
-    want('slack_user_id', getOptionalStringLimitLength(99), assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('txt', getOptionalStringLimitLength(997), assignToP),
-    want('vote', getIntInRange(-1, 1), assignToP, -1), // default to agree
-    want("twitter_tweet_id", getStringLimitLength(999), assignToP),
-    want("quote_twitter_screen_name", getStringLimitLength(999), assignToP),
-    want("quote_txt", getStringLimitLength(999), assignToP),
-    want("quote_src_url", getUrlLimitLength(999), assignToP),
-    want("anon", getBool, assignToP),
-    want("is_seed", getBool, assignToP),
-    resolve_pidThing('pid', assignToP, "post:comments"),
-    handle_POST_comments_slack);
-
-  app.get("/api/v3/comments/translations",
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('tid', getInt, assignToP),
-    want('lang', getStringLimitLength(1,10), assignToP),
-    handle_GET_comments_translations);
-
   app.get("/api/v3/votes/me",
     moveToBody,
     auth(assignToP),
@@ -693,18 +457,6 @@ helpersInitialized.then(function(o) {
     want('tid', getInt, assignToP),
     resolve_pidThing('pid', assignToP, "get:votes"),
     handle_GET_votes);
-
-  app.get("/api/v3/nextComment",
-    timeout(15000),
-    moveToBody,
-    authOptional(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    resolve_pidThing('not_voted_by_pid', assignToP, "get:nextComment"),
-    want('without', getArrayOfInt, assignToP),
-    want('include_social', getBool, assignToP),
-    want('lang', getStringLimitLength(1,10), assignToP), // preferred language of nextComment
-    haltOnTimeout,
-    handle_GET_nextComment);
 
   app.get("/api/v3/testConnection",
     moveToBody,
@@ -799,18 +551,6 @@ helpersInitialized.then(function(o) {
     getPidForParticipant(assignToP, pidCache),
     handle_POST_trashes);
 
-  app.put('/api/v3/comments',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('tid', getInt, assignToP),
-    need('active', getBool, assignToP),
-    need('mod', getInt, assignToP),
-    need('is_meta', getBool, assignToP),
-    need('velocity', getNumberInRange(0, 1), assignToP),
-    handle_PUT_comments);
-
-
   app.post('/api/v3/reportCommentSelections',
     auth(assignToP),
     need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
@@ -819,65 +559,11 @@ helpersInitialized.then(function(o) {
     need('include', getBool, assignToP),
     handle_POST_reportCommentSelections);
     
-
-
   // use this to generate them
   app.get('/api/v3/lti_oauthv1_credentials',
     moveToBody,
     want('uid', getInt, assignToP),
     handle_GET_lti_oauthv1_credentials);
-
-  app.post('/api/v3/conversation/close',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    handle_POST_conversation_close);
-
-  app.post('/api/v3/conversation/reopen',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    handle_POST_conversation_reopen);
-
-  app.put('/api/v3/conversations',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('conversation_id', getStringLimitLength(1, 1000), assignToP), // we actually need conversation_id to build a url
-    want('is_active', getBool, assignToP),
-    want('is_anon', getBool, assignToP),
-    want('is_draft', getBool, assignToP, false),
-    want('is_data_open', getBool, assignToP, false),
-    want('owner_sees_participation_stats', getBool, assignToP, false),
-    want('profanity_filter', getBool, assignToP),
-    want('short_url', getBool, assignToP, false),
-    want('spam_filter', getBool, assignToP),
-    want('strict_moderation', getBool, assignToP),
-    want('topic', getOptionalStringLimitLength(1000), assignToP),
-    want('description', getOptionalStringLimitLength(50000), assignToP),
-    want('vis_type', getInt, assignToP),
-    want('help_type', getInt, assignToP),
-    want('write_type', getInt, assignToP),
-    want('socialbtn_type', getInt, assignToP),
-    want('bgcolor', getOptionalStringLimitLength(20), assignToP),
-    want('help_color', getOptionalStringLimitLength(20), assignToP),
-    want('help_bgcolor', getOptionalStringLimitLength(20), assignToP),
-    want('style_btn', getOptionalStringLimitLength(500), assignToP),
-    want('auth_needed_to_vote', getBool, assignToP),
-    want('auth_needed_to_write', getBool, assignToP),
-    want('auth_opt_fb', getBool, assignToP),
-    want('auth_opt_tw', getBool, assignToP),
-    want('auth_opt_allow_3rdparty', getBool, assignToP),
-    want('verifyMeta', getBool, assignToP),
-    want('send_created_email', getBool, assignToP), // ideally the email would be sent on the post, but we post before they click create to allow owner to prepopulate comments.
-    want('launch_presentation_return_url_hex', getStringLimitLength(1, 9999), assignToP), // LTI editor tool redirect url (once conversation editing is done)
-    want('context', getOptionalStringLimitLength(999), assignToP),
-    want('tool_consumer_instance_guid', getOptionalStringLimitLength(999), assignToP),
-    want('custom_canvas_assignment_id', getInt, assignToP),
-    want('link_url', getStringLimitLength(1, 9999), assignToP),
-    want('subscribe_type', getInt, assignToP),
-    handle_PUT_conversations);
-
 
   app.put('/api/v3/users',
     moveToBody,
@@ -886,69 +572,6 @@ helpersInitialized.then(function(o) {
     want('hname', getOptionalStringLimitLength(9999), assignToP),
     want('uid_of_user', getInt, assignToP),
     handle_PUT_users);
-
-
-  app.delete('/api/v3/metadata/questions/:pmqid',
-    moveToBody,
-    auth(assignToP),
-    need('pmqid', getInt, assignToP),
-    handle_DELETE_metadata_questions);
-
-  app.delete('/api/v3/metadata/answers/:pmaid',
-    moveToBody,
-    auth(assignToP),
-    need('pmaid', getInt, assignToP),
-    handle_DELETE_metadata_answers);
-
-  app.get('/api/v3/metadata/questions',
-    moveToBody,
-    authOptional(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('suzinvite', getOptionalStringLimitLength(32), assignToP),
-    want('zinvite', getOptionalStringLimitLength(300), assignToP),
-    // TODO want('lastMetaTime', getInt, assignToP, 0),
-    handle_GET_metadata_questions);
-
-  app.post('/api/v3/metadata/questions',
-    moveToBody,
-    auth(assignToP),
-    need('key', getOptionalStringLimitLength(999), assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    handle_POST_metadata_questions);
-
-  app.post('/api/v3/metadata/answers',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    need('pmqid', getInt, assignToP),
-    need('value', getOptionalStringLimitLength(999), assignToP),
-    handle_POST_metadata_answers);
-
-  app.get('/api/v3/metadata/choices',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    handle_GET_metadata_choices);
-
-  app.get('/api/v3/metadata/answers',
-    moveToBody,
-    authOptional(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('pmqid', getInt, assignToP),
-    want('suzinvite', getOptionalStringLimitLength(32), assignToP),
-    want('zinvite', getOptionalStringLimitLength(300), assignToP),
-    // TODO want('lastMetaTime', getInt, assignToP, 0),
-    handle_GET_metadata_answers);
-
-  app.get('/api/v3/metadata',
-    moveToBody,
-    auth(assignToP),
-    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
-    want('zinvite', getOptionalStringLimitLength(300), assignToP),
-    want('suzinvite', getOptionalStringLimitLength(32), assignToP),
-    // TODO want('lastMetaTime', getInt, assignToP, 0),
-    handle_GET_metadata);
-
 
   app.get('/api/v3/enterprise_deal_url',
     moveToBody,
@@ -1304,7 +927,6 @@ helpersInitialized.then(function(o) {
   app.get(/^\/pdf$/, makeRedirectorTo("/23mymwyhkn")); // pdf 2017
   app.get(/^\/nabi$/, makeRedirectorTo("/8ufpzc6fkm")); // 
 
-
   app.get(/^\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // conversation view
   app.get(/^\/explore\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // power view
   app.get(/^\/share\/[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForConversation); // share view
@@ -1443,7 +1065,7 @@ helpersInitialized.then(function(o) {
 
   winston.log("info", 'started on port ' + process.env.PORT);
 
-}, function(err) {
+}, (err) => {
   console.error("failed to init server");
   console.error(err);
 });

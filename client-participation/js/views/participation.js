@@ -19,7 +19,8 @@ var polisLogoBase64 = require("../images/polis_logo");
 var preloadHelper = require("../util/preloadHelper");
 var ReadReactView = require('../views/ReadReactView');
 var Strings = require("../strings");
-var template = require('../tmpl/participation');
+var oldTemplate = require('../tmpl/participation');
+//var template = require('../tmpl/participationNew');
 var TopCommentsView = require('../views/TopCommentsView');
 var Utils = require("../util/utils");
 var VisView = require("../lib/VisView");
@@ -56,7 +57,7 @@ function shouldMoveVis() {
 
 module.exports = ConversationView.extend({
   name: "participationView",
-  template: template,
+  template: oldTemplate,
   className: "participationView clickDeselectsHull",
   events: {
     "click #facebookButtonPtpt": "fbConnectBtn",
@@ -215,6 +216,7 @@ module.exports = ConversationView.extend({
     ctx.show_divisive_comments = ctx.vis_type === Constants.VIS_TYPE.TOP_COMMENTS;
 
     ctx.show_pca_vis = ctx.vis_type === Constants.VIS_TYPE.PCA;
+    console.log(ctx);
     return ctx;
   },
 
