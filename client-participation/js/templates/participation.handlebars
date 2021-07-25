@@ -11,15 +11,10 @@
 <div
   class="
   conversationViewRoot
-  clickDeselectsHull
+  clickDeselectsHull container
   {{#if use_background_content_class}}
   background_content
   {{/if}}
-  "
-  style="
-    max-width: 768px; {{!-- check pixel ratio? --}}
-    margin: auto; {{!-- use flexbox rather than auto, or add a container for this container? --}}
-    background-color: {{polis_bgcolor}};
   "> {{! PARTICIPATION VIEW DIV }}
 
   {{#if useBannerHeader}}
@@ -34,28 +29,20 @@
 
 {{!  ------------ BEGIN TOPIC AND DESCRIPTION ---------------  }}
 
-<div class="
-  clickDeselectsHull
-  "
-  style="
-    padding-left: 0px;
-    padding-right: 0px
-    ">
+<section class="
+  clickDeselectsHull header
+">
     <div class="POLIS_HEADLINE conversationViewHeadline">
     {{#unless useBannerHeader}}
       {{#if showLogoAndBreadCrumbInHeader}}
-          <div class="HeadingA">
+          <div class="logobox">
             <a href="pol.is">
-              <img
-                width="164px"
+              <img class="logoImg"
                 src="https://pol.is/polis_logo_2.png"
                 alt=""
                 >
             </a>
             <a
-              style="
-                vertical-align: middle;
-                font-size: 18px;"
               href="/s/{{context}}"
               >
             /s/{{context}}
@@ -63,9 +50,9 @@
           </div>
       {{else}}
         {{#if showLogoInHeader}}
-          <div class="HeadingA">
+          <div class="logobox">
             <img
-              width="164px"
+              class="logoImg"
               src="https://pol.is/polis_logo_2.png"
               alt=""
               >
@@ -75,116 +62,31 @@
     {{/unless}}
 
     {{#if show_admin_button}}
-    <div style="padding: 10px 0px 20px 0px">
-{{!--       <a
-        href="share{{url_name}}"
-        class="Btn Btn-alt"
-        style="margin-right: 20px
-        ">
-        <i class="fa fa-link">
-        </i>
-        &nbsp;SHARE
-      </a> --}}
+    <div 
+      class="adminButton"
+    >
+
       <a
         href="{{url_moderate}}"
         class="Btn Btn-alt"
-        style="margin-right: 20px
-        ">
+        >
         ADMIN
       </a>
-{{!--       {{#if is_active}}
-        <a
-          id="closeConversationButton"
-          class="Btn Btn-alt"
-          style="cursor:pointer; margin-right: 20px; text-decoration: none;"
 
-          >
-          CLOSE
-        </a>
-      {{ else }}
-        <a
-          id="reopenConversationButton"
-          class="Btn Btn-alt"
-          style="cursor:pointer; margin-right: 20px"
-          >
-          REOPEN
-          </a>
-      {{/if}}
-      {{#if no_vis}}
-        <a
-          href="{{url_force_vis}}"
-          class="Btn Btn-alt"
-          style="margin-right: 20px"
-          >
-          SEE VIS
-          </a>
-      {{/if}} --}}
 
     </div>
     {{/if}}
-    {{!-- {{/ifNotEmbedded}} --}}
 
-    {{!--
-    <div style="margin: 10px 0px" class="{{#if hideSocialButtons}}displayNone{{/if}}">
-      <button class="facebookShareButton userWillShareOnFacebook">
-        <i class="svgIcon" style="
-          display: inline-block;
-          position: relative;
-          margin-right: 2px;
-          top: 1px;
-          width: 16px;
-          fill: white;
-        ">{{> iconFaFacebookSquare16}}</i>
-        <span style="
-          top: -2px;
-          position: relative;
-        ">Share</span>
-      </button>
-      {{#if fbShareCount}}
-        <span class="arrow_box">{{fbShareCount}}</span>
-      {{/if}}
-
-      <button class="twitterShareButton userWillShareOnTwitter">
-        <i class="svgIcon" style="
-          display: inline-block;
-          position: relative;
-          margin-right: 2px;
-          top: 1px;
-          width: 16px;
-          fill: white;
-        ">{{> iconFaTwitter16}}</i>
-        <span style="
-          top: -2px;
-          position: relative;
-        ">Tweet</span>
-      </button>
-      {{#if twitterShareCount}}
-        <span class="arrow_box">{{twitterShareCount}}</span>
-      {{/if}}
-    </div>
-    --}}
 
     {{#unless no_topic}}
     {{#ifDefined topic}}
       <h2
-        class="HeadingA"
-        style="
-         margin-bottom: 10px;
-        ">
+        class="voteTopic"
+        >
         {{topic}}
         {{#unless is_active}}
-        <span class="no_you_vote" style="
-         color: white;
-         background-color: rgb(231, 76, 60);
-         /* font-size: 0.7em; */
-         /* padding: .2em; */
-         font-size: 20px;
-         padding: 0px 10px;
-         border-radius: 3px;
-         position: relative;
-         top: -5px;
-         left: 6px;
-        ">closed</span>
+        <span class="no_you_vote" 
+        >closed</span>
       {{/unless}}
       </h2>
     {{/ifDefined}}
@@ -193,9 +95,8 @@
     {{#unless no_description}}
     {{#ifDefined description}}
         <p
-          style="
-            border-left: 4px solid #2980b9;
-            padding-left: 10px;
+          class="
+            voteDescription
           ">
           {{{description}}}
         </p>
@@ -204,58 +105,47 @@
 
     {{#if link_url}}
         <p
-          style="
-            border-left: 4px solid #2980b9;
-            padding-left: 10px;
+          class="
+            linkExternal
           ">
         {{linkExternal link_url link_url}}
         </p>
     {{/if}}
     </div>
-  </div> {{! /fake container }}
+  </section> {{! /fake container }}
 
 {{!  ------------ BEGIN MAIN CONTENT ---------------  }}
 
 {{!  ------------ HELP TEXT ---------------  }}
 
-<div
-  id="helpTextWelcome"
+<section
  class="
   clickDoesNotDeselectHull
-  {{#if hideHelp}} displayNone{{/if}}
-  {{#if no_voting}} displayNone{{/if}} {{!-- this line is here because the help text references voting --}}
+  combox
+  comboxTop
+  {{#if hideHelp}} display-none{{/if}}
+  {{#if no_voting}} display-none{{/if}} {{!-- this line is here because the help text references voting --}}
   ">
-  <p
-    style="margin: 0px;"
-    >
-    <span>
-      {{!-- TODO_SECURITY try to not use triple brackets. --}}
+  <p>
+
       {{{s.participantHelpWelcomeText}}}
-    </span>
 
   </p>
-</div>
-
-{{!  ------------ SUBMIT COMMENT FORM ---------------  }}
-<span id="commentFormBSibling" style="display:none"></span>
+</section>
 
 
 {{!  ------------ VOTING PANEL ---------------  }}
-<span class="{{#if no_voting}}displayNone{{/if}}">
+<section class="voting {{#if no_voting}}display-none{{/if}}">
   {{view readReactView}}
-</span>
+</section>
 
 {{#if auth_prompt_any_social}}
 {{#unless hasFbAndTw}}
 <div
   id="socialButtonsUnderReadReact"
   class=""
-  style="
-    margin-left: 8px;
-    margin-bottom: 20px;
-    display: none; {{! waiting to be shown }}
-  ">
-  <p style="font-size: 14px;">
+  >
+  <p>
     {{s.socialConnectPrompt}}
   </p>
   <div>
@@ -263,14 +153,7 @@
     {{#unless hasFacebook}}
       <button class="facebookButton" id="facebookButtonPtpt">
         <span class="socialButtonText">
-          <i class="svgIcon" style="
-            display: inline-block;
-            position: relative;
-            margin-right: 2px;
-            top: 6px;
-            width: 25px;
-            fill: white;
-          ">{{> iconFaFacebookSquare25}}</i>
+          <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
           {{s.connectFbButton}}
         </span>
       </button>
@@ -281,14 +164,7 @@
     {{#unless hasTwitter}}
       <button class="twitterButton" id="twitterButtonPtpt">
       <span class="socialButtonText">
-        <i class="svgIcon" style="
-          display: inline-block;
-          position: relative;
-          margin-right: 2px;
-          top: 8px;
-          width: 25px;
-          fill: white;
-        ">{{> iconFaTwitter25}}</i>
+        <i class="svgIcon">{{> iconFaTwitter25}}</i>
         {{s.connectTwButton}}
       </span>
       </button>
@@ -299,50 +175,53 @@
 {{/unless}}  {{!-- hasFbAndTw --}}
 {{/if}}  {{!-- auth_prompt_any_social --}}
 
+<div class="progressBar">
+<p>32 von 45</p>    
+<div class="progressBarFilling"></div>   
+
+</div>
 
 
 {{!  ------------ SUBMIT COMMENT FORM ---------------  }}
-<div
-  id="commentFormParent"
-  class="POLIS_COMMENT_FORM {{#if no_write}}displayNone{{/if}}"
+
+<section
+  class="commentForm {{#if no_write}}display-none{{/if}}"
   >
   {{view commentForm}}
-</div>
+</section>
 
-<span class="{{#if no_vis}}displayNone{{/if}}"> {{!-- no_vis toggle wrapper --}}
+<section class="visualisation {{#if no_vis}}display-none{{/if}}"> {{!-- no_vis toggle wrapper --}}
 
   {{#if show_pca_vis}}
-    <div class="HeadingC" style="text-transform:none; cursor: default; white-space: nowrap; border-bottom: none;">
-      {{!-- <img src="https://pol.is/polis-favicon_favicon.png" height="20px" id="opinion_groups_logo"> --}}
+    <h3 class="HeadingVisualisation">
       {{s.opinionGroups}}
-    </div>
+    </h3>
 
     <div
-      id="helpTextGroups"
+      id="comboxVisualisation"
       class="
         clickDoesNotDeselectHull
-        {{#if hideHelp}}displayNone{{/if}}
+        combox
+        {{#if hideHelp}}display-none{{/if}}
       ">
-      <p
-        style="margin: 0px; margin-bottom: 10px;"
-        >
-        <span class="displayNone" id="vis_help_label">
+      <p>
+        <span class="display-none" id="vis_help_label">
           {{!-- TODO_SECURITY try to not use triple brackets. --}}
           {{{s.participantHelpGroupsText}}}
         </span>
-        <span class="displayNone" id="vis_not_yet_label">
+        <span class="display-none" id="vis_not_yet_label">
           {{!-- TODO_SECURITY try to not use triple brackets. --}}
           {{{s.participantHelpGroupsNotYetText}}}
         </span>
       </p>
-      <div id="helpTextGroupsMore" style="display:none; margin-top: 10px">
+      <div id="comboxVisualisationMore">
         {{{s.helpWhatAreGroupsDetail}}}
       </div>
     </div>
   {{/if}}
 
 
-<div id="vis_section" class="displayNone">
+<div id="vis_section" class="display-none">
 
 
 <div style="margin-bottom: 15px;"> {{!-- vis and carousel --}}
@@ -351,13 +230,11 @@
 
 <div
   id="visualization_parent_div"
-  class="clickDoesNotDeselectHull"
-  style="text-align: right; visibility: hidden; background-color: rgba(0,0,0,0);"
+  class="clickDoesNotDeselectHull hidden"
   >
   <div
     id="visualization_div"
-    style="display:none"
-    class="vis_container clickDoesNotDeselectHull"
+    class="vis_container clickDoesNotDeselectHull display-none"
     >
   </div>
 
@@ -365,17 +242,17 @@
 
   {{#if show_top_comments}}
   <div id="top_comments" style="text-align: left">
-    <div class="HeadingC" style="text-transform:none; cursor: default; white-space: nowrap; border-bottom: none;">
+    <h4 class="subheadingVisualisation">
       {{s.topComments}}
-    </div>
+    </h4>
     {{view topCommentsView}}
   </div>
   {{/if}}
   {{#if show_divisive_comments}}
   <div id="divisive_comments" style="text-align: left">
-    <div class="HeadingC" style="text-transform:none; cursor: default; white-space: nowrap; border-bottom: none;">
+    <h4 class="subheadingVisualisation">
       {{s.divisiveComments}}
-    </div>
+    </h4>
     {{view divisiveCommentsView}}
   </div>
   {{/if}}
@@ -383,13 +260,7 @@
 <div
   id="groupSelectionViewContainer"
   class="clickDoesNotDeselectHull"
-  style="
-    display: none;
-    text-align: center;
-    min-height: 34px;
-    margin: 0px;
-    padding: 10px 0px 10px 0px;
-  ">
+ >
   {{view groupSelectionView}}
 </div>
 
@@ -404,35 +275,19 @@
 {{!  ------------ BEGIN FOOTER ---------------  }}
 {{#unless no_footer}}
 
-  <div style="margin-top: 40px; margin-bottom: 20px;">
+  <div class="footerBacklink">
     <a href="https://pol.is" target="_blank">
       {{> logo}}
     </a>
-    <div
-      style="
-        margin-top: 15px;
-        text-align: center;
-      "
-      >
+    <div class="footerLinks">
         {{> linkPrivacy}}
         {{> linkTos}}
     </div>
   </div>
 
-  {{!-- <div style="font-size:18px;font-weight:400;color:white;background-color:#03a9f4;display:flex;-webkit-flex-direction:row;-webkit-flex-wrap:nowrap;-webkit-justify-content:space-between;-webkit-align-items:baseline;-webkit-align-content:stretch;-webkit-order:0;-webkit-flex-grow:0;-webkit-flex-shrink:1;-webkit-flex-basis:auto;-webkit-align-self:auto;" data-reactid=".0.0.$=1$=012.0">
-    <p style="margin-left:20px;font-size:12px;" data-reactid=".0.0.$=1$=012.0.$=1$/=010">© The Authors. 2016 </p>
-    <div style="margin-right:20px;" data-reactid=".0.0.$=1$=012.0.$=1$/=011">
-      <a style="text-decoration:none;cursor:pointer;color:white;font-size:12px;" href="/tos" data-reactid=".0.0.$=1$=012.0.$=1$/=011.$/=10">
-        <span name="file-text-o" class="fa fa-file-text-o" data-reactid=".0.0.$=1$=012.0.$=1$/=011.$/=10.$=10"></span>
-        <span style="margin-left:5px;" data-reactid=".0.0.$=1$=012.0.$=1$/=011.$/=10.$/=11"> TOS </span>
-      </a>
-      <a style="text-decoration:none;cursor:pointer;color:white;font-size:12px;" href="/privacy" data-reactid=".0.0.$=1$=012.0.$=1$/=011.$/=11">
-        <span style="margin-left:5px;" data-reactid=".0.0.$=1$=012.0.$=1$/=011.$/=11.0"> PRIVACY </span>
-      </a>
-    </div>
-  </div> --}}
+
 {{/unless}}
   {{! END FOOTER}}
 {{!  ------------ END FOOTER ---------------  }}
 
-</div> {{! END PARTICIPATION VIEW DIV }}
+</section> {{! END PARTICIPATION VIEW DIV }}

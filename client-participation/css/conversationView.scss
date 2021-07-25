@@ -494,7 +494,7 @@ svg {
   color: #0a77bf;
 }
 
-#comment_shower p, #comment_shower h3 {
+#statement_shower p, #statement_shower h3 {
    font-weight: normal;
    line-height: normal;
    // background-color: $panel-color;
@@ -883,7 +883,7 @@ svg {
 /* BIG PHONE to LITTLE tablet */
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
 
-  #comment_shower {
+  #statement_shower {
     //margin-top: 20px;
   }
   .dropdown-menu {
@@ -894,7 +894,7 @@ svg {
 
 /* LITTLE TABLET and down */
 @media only screen and (min-width : 320px) and (max-width : 1024px) {
-  #comment_shower_frame {
+  #statement_shower_frame {
     padding: 5px;
   }
 
@@ -910,14 +910,6 @@ svg {
     margin: 0px;
   }
 
-  .voteMoreText {
-    // the vote more screen looks funny at the bottom of the page. There's nothing else to do but vote, so people should just get it.
-    // display: none;
-  }
-
-  #comment_shower {
-    // margin-top: 20px;
-  }
   .nav-tabs > li > a {
     padding-left: 12px !important;
     padding-right: 12px !important;
@@ -930,10 +922,6 @@ svg {
     display: none;
   }
 
-
-  .polis-tab {
-    // font-size:10px; // not needed since we're hiding the analyze tab, which makes space for the other tabs
-  }
   #vis_sibling_bottom {
     margin-left: auto;
   }
