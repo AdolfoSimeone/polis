@@ -10,7 +10,10 @@ module.exports = (app, helpers) => {
         getStringLimitLength,
         handle_GET_math_pca2,
         getReportIdFetchRid,
-        handle_GET_math_correlationMatrix
+        handle_GET_math_correlationMatrix,
+        need,
+        want,
+        wantHeader
     } = helpers;
     app.get("/api/v3/math/pca",
         handle_GET_math_pca);

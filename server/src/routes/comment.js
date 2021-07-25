@@ -11,9 +11,21 @@ module.exports = (app, helpers) => {
         assignToPCustom,
         getArrayOfInt,
         getBool,
+        getInt,
+        getIntInRange,
+        getNumberInRange,
+        getReportIdFetchRid,
+        getOptionalStringLimitLength,
         getStringLimitLength,
+        getUrlLimitLength,
         haltOnTimeout,
-        handle_GET_nextComment
+        handle_GET_nextComment,
+        handle_GET_comments,
+        handle_POST_comments,
+        handle_POST_comments_slack,
+        handle_PUT_comments,
+        handle_GET_comments_translations,
+        resolve_pidThing
     } = helpers;
 
     app.get("/api/v3/nextComment",

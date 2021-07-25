@@ -212,12 +212,18 @@ module.exports = (app, helpers) => {
 
     authRoutes(app, { 
         assignToP,
+        authOptional,
+        enableAgid,
         getEmail,
+        getPassword,
+        getBool,
         getStringLimitLength,
         getOptionalStringLimitLength,
         getPasswordWithCreatePasswordRules,
         handle_POST_auth_password,
         handle_POST_auth_deregister,
+        handle_POST_auth_facebook,
+        handle_POST_auth_new,
         need,
         want
     });
@@ -241,10 +247,20 @@ module.exports = (app, helpers) => {
         want,
         auth,
         assignToP,
+        assignToPCustom,
+        getOptionalStringLimitLength,
         getStringLimitLength,
+        getConversationIdFetchZid,
+        getBool,
+        getInt,
+        getEmail,
         handle_GET_conversationPreloadInfo,
         handle_GET_conversationsRecentlyStarted,
-        handle_GET_conversationsRecentActivity
+        handle_GET_conversationsRecentActivity,
+        handle_POST_convSubscriptions,
+        handle_POST_conversation_close,
+        handle_POST_conversation_reopen,
+        handle_PUT_conversations
     });
 
     commentRoutes(app, {
@@ -259,9 +275,21 @@ module.exports = (app, helpers) => {
         assignToPCustom,
         getArrayOfInt,
         getBool,
+        getInt,
+        getIntInRange,
+        getNumberInRange,
+        getReportIdFetchRid,
+        getOptionalStringLimitLength,
         getStringLimitLength,
+        getUrlLimitLength,
         haltOnTimeout,
-        handle_GET_nextComment
+        handle_GET_nextComment,
+        handle_GET_comments,
+        handle_POST_comments,
+        handle_POST_comments_slack,
+        handle_PUT_comments,
+        handle_GET_comments_translations,
+        resolve_pidThing
     });
 
     mathRoutes(app, {
@@ -275,7 +303,10 @@ module.exports = (app, helpers) => {
         getStringLimitLength,
         handle_GET_math_pca2,
         getReportIdFetchRid,
-        handle_GET_math_correlationMatrix
+        handle_GET_math_correlationMatrix,
+        need,
+        want,
+        wantHeader
     });
 
     metaDataRoutes(app, {
@@ -293,6 +324,7 @@ module.exports = (app, helpers) => {
         handle_DELETE_metadata_answers,
         handle_GET_metadata_questions,
         handle_POST_metadata_questions,
+        handle_POST_metadata_answers,
         handle_GET_metadata_answers,
         handle_GET_metadata_choices,
         handle_GET_metadata

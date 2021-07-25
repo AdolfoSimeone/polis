@@ -6,6 +6,7 @@ module.exports = (app, helpers) => {
         auth,
         assignToP,
         assignToPCustom,
+        getOptionalStringLimitLength,
         getStringLimitLength,
         getConversationIdFetchZid,
         getBool,

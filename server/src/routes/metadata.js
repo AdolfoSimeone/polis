@@ -14,6 +14,7 @@ module.exports = (app, helpers) => {
         handle_DELETE_metadata_answers,
         handle_GET_metadata_questions,
         handle_POST_metadata_questions,
+        handle_POST_metadata_answers,
         handle_GET_metadata_answers,
         handle_GET_metadata_choices,
         handle_GET_metadata
