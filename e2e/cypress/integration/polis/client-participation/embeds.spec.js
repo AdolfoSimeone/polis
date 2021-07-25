@@ -20,7 +20,7 @@ describe('Embedded Conversations', () => {
       cyframe().find('div[data-view-name="root"]').as('iframe')
       cyframe().find('#readReactView').as('vote-widget')
       cyframe().find('#comment_form_textarea').as('comment-widget')
-      cyframe().find('#helpTextWelcome').as('vote-help')
+      cyframe().find('.comboxTop').as('vote-help')
       cyframe().find('.POLIS_HEADLINE').as('headline')
       cyframe().find('svg.svgCenter').as('footer-logo')
       cyframe().find('#vis_section').as('vis')
@@ -66,7 +66,7 @@ describe('Embedded Conversations', () => {
     cy.visit(`${Cypress.config().baseUrl}/embed.html?polisDomain=${POLIS_DOMAIN}&data-conversation_id=${this.convoId}&data-ucsh=false`)
     cy.enter(`#polis_${this.convoId}`).then(cyframe => {
       cyframe().find('div[data-view-name="root"]').as('iframe')
-      cyframe().find('#helpTextWelcome').as('vote-help')
+      cyframe().find('.comboxTop').as('vote-help')
     })
 
     cy.get('@iframe').should('be.visible')

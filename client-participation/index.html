@@ -24,26 +24,6 @@
       window.preload = "REPLACE_THIS_WITH_PRELOAD_DATA";
       window.version = "<%= versionString %>";
     </script>
-    <style>
-    .displaynone {
-      display: none;
-    }
-    .hidden {
-      visibility: hidden;
-    }
-    .screen-reader-text {
-        border: 0;
-        clip: rect( 1px, 1px, 1px, 1px );
-        clip-path: inset( 50% );
-        height: 1px;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 1px;
-        word-wrap: normal;
-    }
-    </style>
 
 <script> // Fire off this ajax first. it's slower than the other CDN delivered things.
 (function() {
@@ -203,8 +183,8 @@ function onPreloadFail(statusCode, failResponse) {
     function updateDomainMessage() {
       var el = document.getElementById("badDomainMessage");
       if (el) {
-        el.className = el.className.replace( /(?:^|\s)displaynone(?!\S)/g , '');
-        document.getElementById("mainSpinner").className += " displaynone";
+        el.className = el.className.replace( /(?:^|\s)display-none(?!\S)/g , '');
+        document.getElementById("mainSpinner").className += " display-none";
         clearInterval(updateDomainIntervalRef);
       }
     }

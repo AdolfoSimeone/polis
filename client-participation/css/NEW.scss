@@ -1,0 +1,502 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+
+
+body{
+font-family: 'Rubik', 'Noto Sans JP', Arial, sans-serif;
+font-size: 16px;
+line-height: 1.5rem;
+color: #000;
+background-color: #EAEDF2;
+box-sizing: border-box;
+}
+
+
+.hidden{
+    visibility:hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
+.display-none{
+    display:none;
+}
+
+.display-block{
+    display:block;
+}
+
+/*------------------------- PARTICIPATION -------------------------*/
+
+#header_root{}
+#conversationViewRoot{
+    overflow: hidden;
+    padding: 8px;
+}
+.background_content{}
+.container{
+    background-color: #23628f;
+    max-width: 768px;
+    margin: auto;
+}
+
+.logoImg{
+    width: 164px;
+}
+
+.header{
+    color:#fff;
+}
+
+.adminButton{}
+
+.Btn{
+    font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
+    min-height:48px;
+    box-sizing:border-box;
+}
+
+.screen-reader-text{
+    border: 0;
+    clip: rect( 1px, 1px, 1px, 1px );
+    clip-path: inset( 50% );
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal;
+}
+
+.Btn-Alt{}
+
+.voteTopic{
+font-weight: 700;    
+font-size: 2.5rem;
+line-height: 2.5rem;
+margin: 2rem auto 1rem auto;
+color: white;
+}
+
+.no_you_vote{
+    color: white;
+    background-color: rgb(231, 76, 60);
+    font-size: 20px;
+    padding: 0px 10px;
+    border-radius: 3px;
+    position: relative;
+    top: -5px;
+    left: 6px;
+}
+
+.voteDescription{
+    font-size:1.2rem;
+    margin:1rem auto 2rem auto;
+}
+
+.linkExternal{}
+
+.combox{
+    background: rgba(255, 255, 255, 0.65);
+    border-radius:5px;
+    margin: 1.5rem 2rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: 1rem;
+    font-size: 0.8rem;
+    color: #002454;
+    font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
+}
+
+.comboxTop{}
+#socialButtonsUnderReadReact{
+    margin-left: 8px;
+    margin-bottom: 20px;
+    display: none; /*waiting to be shown*/
+}
+.voting{}
+
+.progressBar{
+   height: 1.5rem;
+   width:100%;
+   background-color:#8A95A7; 
+   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+   color:#fff;
+   font-weight: 500;
+   font-size: 0.8rem;
+   margin: 1rem; //@ bigger sizes: 1rem 3rem;
+
+}
+.progressBarFilling{
+    background-color:#58CA93;
+    height:100%;
+    width:1%;
+}
+
+.commentFormContainer{}
+
+.footerBacklink{
+    margin-top: 40px; 
+    margin-bottom: 20px;
+}
+
+.footerLinks{
+    margin-top: 15px;
+    text-align: center;
+}
+.visualisation{}
+
+.headingVisualisation{}
+
+.subheadingVisualisation{
+    color: rgb(0,0,0);
+    font-weight: normal;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+
+
+#vis_section{}
+#visualization_div{}
+
+.vis_container{}
+
+#groupSelectionViewContainer{
+    display: none;
+    text-align: center;
+    min-height: 34px;
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+}
+
+.groupSelection{
+    margin: auto;
+    margin-bottom: 1px; 
+}
+
+.groupButton{
+    cursor: pointer;
+    font-weight: 700;
+    display: inline-block;
+
+}
+
+.selectedGroupButton{}
+
+#comboxVisualisation{}
+#comboxVisulisation > p {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+#comboxVisualisationMore{
+    display:none; 
+    margin-top: 10px;
+}
+
+/*------------------------- READ-REACT-VIEW -------------------------*/
+
+#readReactView{}
+.votebox{    background-color: #fff;
+    border:1px solid #c2ab2d;
+    padding:1rem; //@ full size: 2rem;
+}
+.voteboxTop{
+
+    z-index: 3;
+}
+
+.voteboxBottom{}
+.voteboxBottom.1{
+    min-height: 30px;
+    position:relative;
+    z-index: 2;
+    margin: 0 auto;
+    width: 101%;
+    height:98%;
+}
+
+.voteboxBottom.2{
+    min-height: 30px;
+    position:relative;
+    z-index: 1;
+    margin: 0 auto;
+    width: 102%;
+    height:96%;
+
+}
+
+.fbNotNowBtn{
+    cursor: pointer;
+}
+
+.facebookInviteFriendsText{}
+#fbConnectBtn{}
+
+/*------------------------- COMMENT-FORM -------------------------*/
+
+.unlessDesktopFontsize{
+    font-size:12px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #000;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
+
+#comment_form_textarea{
+    display: inline-block;
+      width: 100%;
+      font-size: 16px;
+      line-height: 23px;
+      vertical-align: middle;
+}
+
+#socialButtonsCommentForm{
+
+}
+
+#facebookButtonCommentForm{}
+#twitterButtonCommentForm{}
+#comment_form_controls{
+    margin-top: 12px;
+    position: relative;
+}
+
+.commentSubmitClicked{
+    width: 40%;
+    margin-top: 0;
+}
+
+.comment_form_control_hideable{}
+
+#commentCharCount{
+    display: none; 
+    color: gray;
+}
+
+#commentCharCountExceeded{
+    display: none;
+    color:#F06A6A;
+}
+
+#comment_button{
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #0090ff;
+    color: white;
+    letter-spacing: 0.07em;
+    min-width: 110px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.comment_sent_message > span {
+margin-left:5px;
+}
+
+.avatar{
+    display: inline-block;
+    margin-right: 10px;
+    width:37px;
+    min-height: 37px;
+    min-width: 37px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0, 0.1);
+  
+}
+
+#facebookButtonCommentForm{}
+#twitterButtonCommentForm{}
+
+
+/*------------------------- VOTE-VIEW -------------------------*/
+
+
+#statement_shower{}
+
+.voteBoxInfos{}
+.socialButtonsVoteView{}
+
+.protip{}
+
+#facebookButtonVoteView{
+    padding-top: 0px; 
+    margin-bottom: 4px;
+}
+
+
+.facebookButton{}
+
+#twitterButtonVoteView{
+    padding-top: 0px;
+    margin-bottom: 4px;
+}
+
+.svgIcon{
+    display: inline-block;
+    position: relative;
+    margin-right: 2px;
+    top: 6px;
+    width: 25px;
+    fill: white;
+}
+
+.twitterButton{}
+.svgIcon{}
+.Notification{
+    margin:1.2rem;
+}
+.Notification--warning{}
+.Notification > .fa-check-square-o{
+    font-size: 20px;
+    color: #2ecc71;
+    position: relative;
+    top: 1px;
+}
+
+.HeadingFacebook{}
+.FormVertical{}
+#subscribeEmailForm{}
+#gatekeeperEmailCreate{}
+.FormVertical-group{}
+.FormLabel{}
+.FormControl{}
+.email{}
+
+#subscribeBtn{
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #0090ff;
+    color: white;
+    min-width: 110px;
+    height: 40px;
+    margin-left: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.socialAvatar{
+    width: 36px;
+    min-height: 36px;
+    min-width: 36px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+.socialName{
+    display: inline;
+    position: relative;
+    top: -3px;
+    margin-left: 5px;
+    font-weight: 300;
+}
+.buttonTranslate
+#showTranslationButtonVoteView
+#hideTranslationButtonVoteView
+
+
+.statement{
+    //margin-left: 55px;
+
+    color:#002454;
+    font-weight: 500;
+
+    //min-height: 65px;
+    position: relative;
+    //top: -13px;
+    //width: 70%;
+
+}
+
+.modButtonContainer{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.modToggle{}
+.moderateButton{}
+.selectedModerateButton{}
+.moderateSubmitButton{}
+
+.flexbox{
+    display: flex;
+}
+.justify-content-space-around{}
+.align-items-baseline{}
+.unselectable{}
+
+.reactionButton{
+    color:#fff;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+}
+.reactionButtons{
+    
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: row wrap;
+        justify-content: space-around;
+        margin-bottom: 20px;
+}
+
+#agreeButton{
+    background-color:#58CA93;
+}
+#disagreeButton{
+    background-color:#F06A6A;
+}
+#passButton{
+    background-color: #AAB2BF;
+}
+
+
+.importantCheckbox{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#hereIsNextStatementLabel {
+    display: none;
+}
