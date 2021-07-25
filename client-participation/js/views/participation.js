@@ -20,7 +20,7 @@ var preloadHelper = require("../util/preloadHelper");
 var ReadReactView = require('../views/ReadReactView');
 var Strings = require("../strings");
 var oldTemplate = require('../tmpl/participation');
-var template = require('../tmpl/participationNew');
+//var template = require('../tmpl/participationNew');
 var TopCommentsView = require('../views/TopCommentsView');
 var Utils = require("../util/utils");
 var VisView = require("../lib/VisView");
@@ -216,6 +216,7 @@ module.exports = ConversationView.extend({
     ctx.show_divisive_comments = ctx.vis_type === Constants.VIS_TYPE.TOP_COMMENTS;
 
     ctx.show_pca_vis = ctx.vis_type === Constants.VIS_TYPE.PCA;
+    console.log(ctx);
     return ctx;
   },
 

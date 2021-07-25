@@ -539,7 +539,7 @@ String.prototype.hashCode = function () {
 const fail = Log.fail;
 const userFail = Log.userFail;
 
-function initializePolisHelpers() {
+async function initializePolisHelpers() {
   // // If there are any comments which have no votes by the owner, create a PASS vote by the owner.
   // pgQuery("select * from comments", [], function(err, comments) {
   //     pgQuery("select * from votes", [], function(err, votes) {
