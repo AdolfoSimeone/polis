@@ -216,7 +216,6 @@ module.exports = ConversationView.extend({
     ctx.show_divisive_comments = ctx.vis_type === Constants.VIS_TYPE.TOP_COMMENTS;
 
     ctx.show_pca_vis = ctx.vis_type === Constants.VIS_TYPE.PCA;
-    console.log(ctx);
     return ctx;
   },
 
