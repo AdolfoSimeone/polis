@@ -146,6 +146,14 @@ module.exports = Handlebones.ModelView.extend({
     if (remaining > 100) {
       remaining = "100+";
     }
+    var progress = 0;
+    if (!remaining){
+      progress = 100;
+    }
+    else{
+      progress = remaining / ctx.total * 100;
+    }
+    ctx.progress = progress;
     ctx.remainingString = Strings.comments_remaining.replace("{{num_comments}}", remaining);
     ctx.remainingStringScreenReader = Strings.comments_remaining2.replace("{{num_comments}}", remaining);
     return ctx;
