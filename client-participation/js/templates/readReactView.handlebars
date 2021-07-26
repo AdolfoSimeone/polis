@@ -2,37 +2,27 @@
 
 <div
   id="readReactView"
-  style="margin-bottom: -40px;"
+  class="votebox"
   >
 
   {{!-- Top of "Card stack" --}}
-  <div
-  	class="
-  		custom_gutter
-  		lightPanel
-  		"
-  	style="
-  		position:relative;
-  		top: 0px;
-  		z-index: 3;
-  		{{!-- min-height: 144px; attempt to avoid flashing on vote view load--}}
-  	">
+  <div class="voteboxTop">
 
     {{!-- This is the optional social prompt --}}
 	  {{#if promptFacebook}}
-	  <div style="margin: 20px;" class="Notification Notification--warning">
-	    <p class="HeadingF HeadingF--light pull-right" style="cursor: pointer" role="button" type="button" id="fbNotNowBtn">
+	  <div class="Notification Notification--warning">
+	    <p role="button" type="button" id="fbNotNowBtn">
 	    	<i class="fa fa-times"></i> Not now
 	    </p>
 	    <div>
-	      <p class="facebookCaveatText">
+	      <p class="facebookInviteFriendsText headingFacebook">
 		      Connect Facebook and invite your friends to see them in the visualization! We will not post on your behalf.
 	      </p>
-	      <div class="text-center">
+	      
 		    	<button id="fbConnectBtn" class="facebookButton">
 		    		<i class="fa fa-facebook-square"></i>&nbsp; Connect Facebook
 		      </button>
-	      </div>
+
 	    </div>
 	  </div>
 	  {{else}}
@@ -41,27 +31,9 @@
 	</div>
 
   {{!-- Empty "Card stack" div1 (notice css "top" and "width") --}}
-	<div
-		style="
-			min-height: 30px;
-			position:relative;
-			top: -26px;
-			z-index: 2;
-			margin: 0 auto;
-			width: 99%;
-		"
-		class="lightPanel">
+	<div class="voteboxBottom 1">
 	</div>
   {{!-- Empty "Card stack" div2 (notice css "top" and "width") --}}
-	<div
-		style="
-			min-height: 30px;
-			position:relative;
-			top: -52px;
-			z-index: 1;
-			margin: 0 auto;
-			width: 98%;
-		"
-		class="lightPanel">
+	<div class="voteboxBottom 2">
 	</div>
 </div>

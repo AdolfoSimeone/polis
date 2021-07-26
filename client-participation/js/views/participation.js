@@ -19,7 +19,7 @@ var polisLogoBase64 = require("../images/polis_logo");
 var preloadHelper = require("../util/preloadHelper");
 var ReadReactView = require('../views/ReadReactView');
 var Strings = require("../strings");
-var oldTemplate = require('../tmpl/participation');
+var template = require('../tmpl/participation');
 //var template = require('../tmpl/participationNew');
 var TopCommentsView = require('../views/TopCommentsView');
 var Utils = require("../util/utils");
@@ -57,7 +57,7 @@ function shouldMoveVis() {
 
 module.exports = ConversationView.extend({
   name: "participationView",
-  template: oldTemplate,
+  template: template,
   className: "participationView clickDeselectsHull",
   events: {
     "click #facebookButtonPtpt": "fbConnectBtn",
@@ -65,8 +65,6 @@ module.exports = ConversationView.extend({
     "click .twitterShareButton": "shareOnTwitter",
     "click .facebookShareButton": "shareOnFacebook",
     "click .hideOnClick": "hideOnClick",
-    // "click #helpTextGroups": "hideHelpTextGroups",
-    // "click #helpTextWelcome": "hideHelpTextWelcome",
     "click #helpTextGroupsExpand": "expandHelpTextGroups",
     // "click #fbLoginBtn": "fbConnectBtn", // NOTE: may want a separate handler/API
     // "click #twitterLoginBtn": "twitterConnectBtn", // NOTE: may want a separate handler/API
@@ -89,12 +87,7 @@ module.exports = ConversationView.extend({
       $('.query_result_item').first().trigger('click');
     }
   },
-  // hideHelpTextWelcome: function() {
-  //   $("#helpTextWelcome").fadeOut();
-  // },
-  // hideHelpTextGroups: function() {
-  //   $("#helpTextGroups").fadeOut();
-  // },
+
   expandHelpTextGroups: function(e) {
     $("#helpTextGroupsExpand").hide();
     $("#helpTextGroupsMore").show();
@@ -1172,10 +1165,6 @@ module.exports = ConversationView.extend({
           if (false) {
             $("#voteMoreParent").show();
           }
-          // if (AB.isA()) {
-          //   var cfp = $("#commentFormParent").detach();
-          //   cfp.insertAfter($("#commentFormBSibling"));
-          // }
 
           if (window.preload.firstConv.participant_count < MIN_PTPTS) {
             $("#vis_not_yet_label").show();

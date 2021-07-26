@@ -48,23 +48,12 @@ module.exports = Handlebones.ModelView.extend({
   context: function() {
     var ctx = Handlebones.ModelView.prototype.context.apply(this, arguments);
     ctx.iOS = iOS;
-    ctx.customStyles = "";
-    // if (ctx.txt && ctx.txt.length < 30) {
-    //   ctx.customStyles += "text-align: center; ";
-    // ctx.customStyles += "padding-top: 39px; ";
-    //   ctx.customStyles += "font-size: 22px; ";
-    // }
     ctx.email = userObject.email;
     ctx.subscribed = this.isSubscribed();
     if (ctx.created) {
       ctx.createdString = (new Date(ctx.created * 1)).toString().match(/(.*?) [0-9]+:/)[1];
     }
     ctx.s = Strings;
-
-    var btnBg = preload.conversation.style_btn;
-    if (btnBg) {
-      ctx.customBtnStyles = "background-color: " + btnBg + ";";
-    }
 
     ctx.auth_opt_tw = preload.firstConv.auth_opt_tw;
     ctx.auth_opt_fb = preload.firstConv.auth_opt_fb;
