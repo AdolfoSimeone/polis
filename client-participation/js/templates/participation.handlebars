@@ -21,8 +21,7 @@
     {{> headerWhatIsPolis}}
   {{/if}}
 <div
-  class="clickDoesNotDeselectHull"
-  style="display: none"
+  class="clickDoesNotDeselectHull display-none"
 >
   {{view conversationTabs}}
   </div>
@@ -170,22 +169,21 @@
       </button>
     {{/unless}}
     {{/if}}
-  </div>
+
+  </div>  
+
 </div>
+
 {{/unless}}  {{!-- hasFbAndTw --}}
 {{/if}}  {{!-- auth_prompt_any_social --}}
 
-<div class="progressBar">
-<p>32 von 45</p>    
-<div class="progressBarFilling"></div>   
 
-</div>
 
 
 {{!  ------------ SUBMIT COMMENT FORM ---------------  }}
 
 <section
-  class="commentForm {{#if no_write}}display-none{{/if}}"
+  class="commentForm  container{{#if no_write}}display-none{{/if}}"
   >
   {{view commentForm}}
 </section>
@@ -193,7 +191,7 @@
 <section class="visualisation {{#if no_vis}}display-none{{/if}}"> {{!-- no_vis toggle wrapper --}}
 
   {{#if show_pca_vis}}
-    <h3 class="HeadingVisualisation">
+    <h3 class="headingVisualisation">
       {{s.opinionGroups}}
     </h3>
 
@@ -269,7 +267,7 @@
 
 </span> {{!-- end no_vis toggle wrapper --}}
 
-
+</div>
 
 
 {{!  ------------ BEGIN FOOTER ---------------  }}

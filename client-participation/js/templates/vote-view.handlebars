@@ -3,7 +3,7 @@
 
 <div id="statement_shower">
 
-<div class="voteboxInfos">
+<div class="voteboxTop">
   {{#if needSocial}}
 {{!-- ================ CONNECT FACEBOOK / TWITTER ================ --}}
 <div
@@ -68,7 +68,7 @@
 {{else}} {{!-- !empty --}}
 
   <!-- there is a comment to show -->
-  <div> {{!-- notempty scenario div --}}
+  <div class="voteboxInfos"> {{!-- notempty scenario div --}}
 
     <span class="screen-reader-text">
       {{remainingStringScreenReader}}
@@ -223,3 +223,6 @@
 <div id="hereIsNextStatementLabel" class="screen-reader-text" role="alert">{{s.hereIsNextStatement}}</div>
 
 </div> {{!-- /statement_shower div --}}
+
+<div class="progressBar">    
+<div class="progressBarFilling" style="width:{{progress}}%"><p> {{myVoteCount}} de {{total}}</p>  </div> 

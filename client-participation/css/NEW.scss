@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 
 
 body{
+margin:0;
+padding:0;    
 font-family: 'Rubik', 'Noto Sans JP', Arial, sans-serif;
 font-size: 16px;
 line-height: 1.5rem;
-color: #000;
+color: rgb(1, 5, 14);
 background-color: #EAEDF2;
 box-sizing: border-box;
+}
+
+img{
+    display:inline-block
 }
 
 
@@ -32,15 +39,18 @@ box-sizing: border-box;
 /*------------------------- PARTICIPATION -------------------------*/
 
 #header_root{}
+
 #conversationViewRoot{
     overflow: hidden;
     padding: 8px;
 }
 .background_content{}
+
+
 .container{
-    background-color: #23628f;
-    max-width: 768px;
-    margin: auto;
+    background-color: #4d6d87;
+    max-width: 1072px;
+    margin: 2rem auto;
 }
 
 .logoImg{
@@ -51,12 +61,21 @@ box-sizing: border-box;
     color:#fff;
 }
 
+.badDomainMessage{
+    text-align:center; margin: 40px;
+}
+
 .adminButton{}
 
 .Btn{
     font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
     min-height:48px;
     box-sizing:border-box;
+    text-align: center;
+    cursor: pointer;
+    text-transform:none;
+    line-height: 2rem;
+    border-radius:2px;
 }
 
 .screen-reader-text{
@@ -113,40 +132,46 @@ color: white;
     font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
 }
 
-.comboxTop{
- margin: 1.5rem 0.5rem;
+.combox > p{
+    flex-basis:100%;
 }
+
+
+.comboxTop{}
 
 #socialButtonsUnderReadReact{
     margin-left: 8px;
     margin-bottom: 20px;
     display: none; /*waiting to be shown*/
 }
-.voting{margin: 1.5rem 0.5rem;}
+.voting{
+    margin: 1rem 0 3rem 0;
+}
 
 .progressBar{
-   height: 1.5rem;
+   position:absolute;
    width:100%;
+   height: 2rem;
    background-color:#8A95A7; 
    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
    color:#fff;
    font-weight: 500;
    font-size: 0.8rem;
-   margin: 1rem; //@ bigger sizes: 1rem 3rem;
+   margin: 3rem auto 0 -1rem;//@ bigger sizes: 1rem 3rem;
 
 }
-.progressBar >p{
+.progressBar > p{
     position:absolute;
     z-index:9;
-    right:4rem;
+    right:2rem;
+    top: 0.25rem;
+    font-weight: bold;
 }
 
 .progressBarFilling{
     background-color:#58CA93;
     height:100%;
-    width:1%;
     position: relative;
-    top: -2.13rem;
     z-index:8;
 }
 
@@ -161,9 +186,18 @@ color: white;
     margin-top: 15px;
     text-align: center;
 }
-.visualisation{}
+.visualisation{
+    margin:3.5rem 0.5rem;
+}
 
-.headingVisualisation{}
+.headingVisualisation{
+    color:#fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: 500;
+    text-align: center;
+    font-size: 1.25rem;
+}
 
 .subheadingVisualisation{
     color: rgb(0,0,0);
@@ -215,17 +249,22 @@ color: white;
 /*------------------------- READ-REACT-VIEW -------------------------*/
 
 #readReactView{}
-.votebox{    background-color: #fff;
+.voteboxContainer{
+
+}
+
+.votebox{    
+    background-color: #fff;
     border:1px solid #c2ab2d;
-    padding:1rem; //@ full size: 2rem;
-}
-.voteboxTop{
-
+    padding: 2rem 1rem;
     z-index: 3;
+    position:relative;
+    border-radius: 1px;
 }
 
-.voteboxBottom{}
-.voteboxBottom.1{
+.voteboxBackground{}
+
+.voteboxBackground.1{
     min-height: 30px;
     position:relative;
     z-index: 2;
@@ -276,20 +315,65 @@ color: white;
     transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   }
 
+.commentForm{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}  
+
+.commentSubmitContainer{
+    background-color: #fff;
+    border: 1px solid #aab2bf;
+    padding: 2rem 1rem;
+    border-radius: 1px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-items:space-between;
+    align-items: center;
+}
+
+.commentSubmitContainer > p{
+    //font-family: 'Barlow', 'Noto Sans JP', Arial,  sans-serif;
+    margin:1rem;
+    color:#32517b;
+    font-size:0.8rem;
+}
+
+.avatarContainer{}
+
+.commentFormTextareaContainer{
+    flex-basis:90%;
+}
+
+.commentForm > label{
+    padding-top:0.5rem;
+    font-size:0.8rem;
+    font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
+}
+
 #comment_form_textarea{
     display: inline-block;
-      width: 100%;
-      font-size: 16px;
-      line-height: 23px;
-      vertical-align: middle;
+    vertical-align: middle;
+    height: 5rem;
+    font-family: 'Rubik', 'Noto Sans JP', 'Arial', sans-serif;
+    font-style: italic;
 }
 
 #socialButtonsCommentForm{
-
+ display:flex;
+ flex-wrap: wrap;
+ justify-content:left;
+ flex-basis:65%;
 }
 
-#facebookButtonCommentForm{}
-#twitterButtonCommentForm{}
+#facebookButtonCommentForm{
+    margin-bottom:1rem;
+}
+#twitterButtonCommentForm{    
+    margin-bottom:1rem;
+}
+
 #comment_form_controls{
     margin-top: 12px;
     position: relative;
@@ -303,8 +387,10 @@ color: white;
 .comment_form_control_hideable{}
 
 #commentCharCount{
-    display: none; 
-    color: gray;
+    //display: none; 
+    color: #32517b;
+   margin-left:2rem; 
+   font-weight:600;
 }
 
 #commentCharCountExceeded{
@@ -312,19 +398,17 @@ color: white;
     color:#F06A6A;
 }
 
-#comment_button{
-    text-transform: none;
-    font-size: 16px;
-    font-weight: 500;
+.submitButton{
+    text-transform: uppercase;
+    font-weight: 700;
     cursor: pointer;
     border: none;
-    border-radius: 4px;
-    background-color: #0090ff;
+    background-color: #58CA93;
     color: white;
     letter-spacing: 0.07em;
-    min-width: 110px;
-    height: 40px;
-    margin-left: 5px;
+    min-width: 8rem;
+    
+    margin: 0rem 0rem 1rem 1rem;
 }
 
 .comment_sent_message > span {
@@ -333,17 +417,23 @@ margin-left:5px;
 
 .avatar{
     display: inline-block;
-    margin-right: 10px;
-    width:37px;
-    min-height: 37px;
-    min-width: 37px;
-    border-radius: 3px;
-    border: 1px solid rgba(0,0,0, 0.1);
+    margin-right: 1rem;
+    width:2.5rem;
+    height:2.5rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 2px;
+    border: 1px solid #AAB2BF;
   
 }
 
-#facebookButtonCommentForm{}
-#twitterButtonCommentForm{}
+#facebookButtonCommentForm{
+    
+    height: 40px;
+}
+#twitterButtonCommentForm{
+    height: 40px;
+}
 
 
 /*------------------------- VOTE-VIEW -------------------------*/
@@ -351,10 +441,18 @@ margin-left:5px;
 
 #statement_shower{}
 
-.voteBoxInfos{}
+.voteboxInfos{
+    position: relative; 
+    display: flex;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
 .socialButtonsVoteView{}
 
-.protip{}
+.protip{
+    flex-basis:100%;
+}
 
 #facebookButtonVoteView{
     padding-top: 0px; 
@@ -362,7 +460,9 @@ margin-left:5px;
 }
 
 
-.facebookButton{}
+.facebookButton{
+    border:1px solid #fff;
+}
 
 #twitterButtonVoteView{
     padding-top: 0px;
@@ -386,14 +486,18 @@ margin-left:5px;
 .Notification--warning{}
 .Notification > .fa-check-square-o{
     font-size: 20px;
-    color: #2ecc71;
+    color: #58CA93;
     position: relative;
     top: 1px;
 }
 
 .HeadingFacebook{}
 .FormVertical{}
-#subscribeEmailForm{}
+#subscribeEmailForm{
+    font-family:'Rubik', 'Noto sans JP', Arial, sans-serif;
+    font-weight:bold;
+}
+
 #gatekeeperEmailCreate{}
 .FormVertical-group{}
 .FormLabel{}
@@ -416,19 +520,18 @@ margin-left:5px;
     margin-top: 10px;
 }
 .socialAvatar{
-    width: 36px;
-    min-height: 36px;
-    min-width: 36px;
-    margin-left: 10px;
-    margin-top: 10px;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+    width: 2.5rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 2px;
+    border: 1px solid #AAB2BF;
 }
 .socialName{
     display: inline;
     position: relative;
-    top: -3px;
-    margin-left: 5px;
+    text-align: center;
+    height: 2rem;
     font-weight: 300;
 }
 .buttonTranslate
@@ -475,11 +578,16 @@ margin-left:5px;
 .reactionButton{
     color:#fff;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    text-align: center;
+   // display: flex;
+    //align-items: center;
+    padding: 0.25rem 0.5rem 0.8rem 0.5rem;
+    margin:0.5rem;
+    min-height: 3.2rem;
+    width: 17rem;
+
 
 }
+
 .reactionButtons{
     
         display: -webkit-box;
@@ -489,7 +597,7 @@ margin-left:5px;
         display: flex;
         -webkit-flex-flow: row wrap;
         justify-content: space-around;
-        margin-bottom: 20px;
+       
 }
 
 #agreeButton{
@@ -500,6 +608,7 @@ margin-left:5px;
 }
 #passButton{
     background-color: #AAB2BF;
+    padding-top: 0.8rem;
 }
 
 
@@ -510,4 +619,52 @@ margin-left:5px;
 
 #hereIsNextStatementLabel {
     display: none;
+}
+
+@media(min-width:560){
+
+    .container{
+        padding:1rem;
+    }
+
+    .votebox{
+        padding: 2rem;
+    }
+
+    .avatar{
+        width:3.5rem;
+        height:3.5rem;
+        min-height: 3.5rem;
+        min-width: 3.5rem;
+    }
+
+    #comment_form_textarea{
+        height: 4rem;
+        margin-left: -60px;
+        position: relative;
+        z-index: 0;
+        padding-left: 60px;
+    }
+
+    .reactionButton{
+
+        width:auto;
+    }
+    
+
+    .progressBar{
+    }
+
+    
+}
+
+
+
+
+@media(min-width:720px){
+
+    .container{
+        padding:2rem;
+    }
+
 }
