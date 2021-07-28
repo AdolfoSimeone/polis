@@ -4,11 +4,12 @@
 
 <div
   class="
+    combox
     {{#if no_write_hint}}hidden{{/if}}
     "> {{! protips column }}
 
   <p
-    style="{{#unless desktop}}.unlessDesktopFontsize{{/unless}}"
+    class=" {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
     >
       {{!-- present all hints to screen reader --}}
 
@@ -31,9 +32,6 @@
           <li>{{{s.helpWriteListRaisNew}}}</li>
           <li>{{{s.helpWriteListShort}}}</li>
         </ul>
-        <label for="comment_form_textarea" class="display-block;">
-          {{{s.tipCommentsRandom}}}
-        </label>
       {{/if}}
 
       {{!-- end screen-reader-text --}}
@@ -52,7 +50,7 @@
     id="char_limit_exceeded_message"
     class="protip"
     aria-hidden="true"
-    class="display-block {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+    class="display-block  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
     >
       <span aria-invalid="true" role="alert">
         {{charLimitString}}
@@ -80,12 +78,15 @@
      class="
       protip
       display-none
-      {{#unless desktop}}unlessDesktopFontsize{{/unless}}
+      {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}
       ">
         <span aria-invalid="true" role="alert">
           {{s.tipNoQuestions}}
         </span>
   </p>
+<p> <label for="comment_form_textarea" class="display-block;">
+          {{{s.tipCommentsRandom}}}
+        </label></p>
 
 </div> {{! end protips column}}
 
@@ -97,15 +98,14 @@
     role="form">
 
     {{!-- ================ SOCIAL PICTURE && TEXT AREA ================ --}}
-    <div class="display-block">
+    <div class="commentSubmitContainer">
+     <div class="commentFormTextareaContainer">
       {{#unless is_anon}}
-      <span class="display-block">
         {{view profilePicView}}
-      </span>
       {{/unless}}
-      <span class="display-block">
+
         <textarea
-          class="form-control"
+          class="form-control commentFormTextarea display-block"
           id="comment_form_textarea"
           rows="1"
           name="txt"
@@ -115,43 +115,33 @@
           {{#if shouldAutofocusOnTextarea}}autofocus{{/if}}
 
           ></textarea>
-      </span>
-    </div>
-
-    {{!-- ================ CONNECT FACEBOOK / TWITTER ================ --}}
-    <div
-      id="socialButtonsCommentForm"
-    >
-      <div class="protip"><p><i class="fa fa-microphone"></i>&nbsp; {{s.connectToPostPrompt}}</p></div>
-      {{#if auth_opt_fb}}
+        </div>
+  
+  
+       <p><i class="fa fa-microphone"></i>&nbsp; {{s.connectToPostPrompt}}</p>
+       <div id="socialButtonsCommentForm">
+            {{#if auth_opt_fb}}
       {{#unless hasFacebook}}
-        <button id="facebookButtonCommentForm" class="facebookButton">
+        <button id="facebookButtonCommentForm" class="Btn socialButton facebookButton">
           <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
           {{s.connectFacebook}}</button>
       {{/unless}}
       {{/if}}
       {{#if auth_opt_tw}}
       {{#unless hasTwitter}}
-        <button id="twitterButtonCommentForm" class="twitterButton">
+        <button id="twitterButtonCommentForm" class="Btn socialButton twitterButton">
         <i class="svgIcon">{{> iconFaTwitter25}}</i>
           {{s.connectTwitter}}</button>
       {{/unless}}
       {{/if}}
-    </div>
+      </div>
 
-    {{!-- ================ LOWER CONTAINER ================ --}}
-    <div
-      id="comment_form_controls"
-      class="
-        comment_form_control_hideable
-      ">
-
-   {{!-- ================ CHARACTER COUNT && BUTTON ================ --}}
-   <div>
+       {{!-- ================ CHARACTER COUNT && BUTTON ================ --}}
+   <div class="submitButtonContainer">
       <span
         id="commentCharCount"
         aria-hidden="true" {{!-- don't show this to screen reader, since there's no problem --}}
-        class="comment_form_control_hideable unselectable">
+        class=" {{!comment_form_control_hideable}} unselectable">
       </span>
       <label
         id="commentCharCountExceeded"
@@ -164,6 +154,7 @@
           Btn
           Btn-primary
           unselectable
+          submitButton
           "
         id="comment_button"
 
@@ -171,8 +162,14 @@
         >
         {{s.submitComment}}
       </button>
-   </div>
+   </div>   
+      
+       </div>
 
+    {{!-- ================ LOWER MESSAGE AREA ================ --}}
+      <div class="protip combox">
+
+        
       {{!-- ================ SUBMIT BUTTON CLICKED RESPONSE AREA ================ --}}
       <div
           class=" 
@@ -183,7 +180,7 @@
 
         <p
           id="comment_sent_message"
-          class=" comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class=" comment_sent_message display-none {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -193,7 +190,7 @@
 
         <p
           id="comment_send_failed_message"
-          class="comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class="comment_sent_message display-none  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -206,7 +203,7 @@
 
         <p
           id="comment_send_failed_duplicate_message"
-          class="comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class="comment_sent_message display-none  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -219,7 +216,7 @@
 
         <p
           id="comment_send_failed_conversation_closed_message"
-          class="comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class="comment_sent_message display-none  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -232,7 +229,7 @@
 
         <p
           id="comment_send_failed_empty_message"
-          class="comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class="comment_sent_message display-none  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -245,7 +242,7 @@
 
         <p
           id="comment_send_failed_too_long_message"
-          class="comment_sent_message display-none {{#unless desktop}}unlessDesktopFontsize{{/unless}}"
+          class="comment_sent_message display-none  {{!{{!#unless desktop}}unlessDesktopFontsize{{!/unless}}}}"
           role="alert"
           >
             <span>
@@ -256,6 +253,16 @@
             </span>
         </p>
       </div> {{! end SUBMIT BUTTON CLICKED RESPONSE AREA  column}}
+        
+    </div>
+
+    {{!-- ================ LOWER CONTAINER ================ --}}
+    <div
+      id="comment_form_controls"
+      class="
+        comment_form_control_hideable
+      ">
+
 
    {{!-- ================ END LOWER CONTAINER ================ --}}
     </div>

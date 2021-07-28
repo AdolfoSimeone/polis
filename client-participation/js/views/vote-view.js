@@ -146,16 +146,22 @@ module.exports = Handlebones.ModelView.extend({
     if (remaining > 100) {
       remaining = "100+";
     }
+    var myVoteCount = 0;
     var progress = 0;
+    //If remaining and total come up emptzy    
     if (!remaining){
       progress = 100;
+      total = myVoteCount = ctx.votesByMe.length;
     }
     else{
-      progress = remaining / ctx.total * 100;
+      myVoteCount = ctx.votesByMe ? ctx.votesByMe.length : ctx.total - remaining;
+      progress = myVoteCount / ctx.total * 100;
     }
+    ctx.myVoteCount = myVoteCount;
     ctx.progress = progress;
     ctx.remainingString = Strings.comments_remaining.replace("{{num_comments}}", remaining);
     ctx.remainingStringScreenReader = Strings.comments_remaining2.replace("{{num_comments}}", remaining);
+    console.log(ctx);
     return ctx;
   },
 

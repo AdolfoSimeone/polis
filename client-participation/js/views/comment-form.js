@@ -133,7 +133,7 @@ module.exports = Handlebones.ModelView.extend({
       this.showMessage("#commentTooLongAlert");
       // this.buttonActive = false;
       this.$("#commentCharCount").text("");
-      this.$("#commentCharCount").hide();
+      this.$("#commentCharCount").classList.add("hidden");
       this.$("#commentCharCountExceeded").text(txt.replace("{{CHARACTERS_COUNT}}", num));
       this.$("#commentCharCountExceeded").show();
     } else {
@@ -149,7 +149,7 @@ module.exports = Handlebones.ModelView.extend({
       this.$("#commentCharCount").text(txt.replace("{{CHARACTERS_COUNT}}", num));
       this.$("#commentCharCount").show();
       this.$("#commentCharCountExceeded").text("");
-      this.$("#commentCharCountExceeded").hide();
+      this.$("#commentCharCount").classList.remove("hidden");
     }
 
     this.chooseBasicTip(formText);
@@ -236,6 +236,9 @@ module.exports = Handlebones.ModelView.extend({
     var hasSocial = window.userObject.hasFacebook || window.userObject.hasTwitter || !_.isUndefined(xid);
     var needsSocial = preload.firstConv.auth_needed_to_write;
     M.add(M.COMMENT_SUBMIT_CLICK);
+    console.log("submit comment");
+    console.log(hasSocial);
+    console.log(needsSocial);
     if (hasSocial || !needsSocial) {
       M.add(M.COMMENT_SUBMIT_INIT);
       doSubmitComment();
