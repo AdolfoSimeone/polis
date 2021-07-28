@@ -99,12 +99,13 @@
 
     {{!-- ================ SOCIAL PICTURE && TEXT AREA ================ --}}
     <div class="commentSubmitContainer">
+     <div class="commentFormTextareaContainer">
       {{#unless is_anon}}
         {{view profilePicView}}
       {{/unless}}
-      <span class="display-block commentFormTextareaContainer">
+
         <textarea
-          class="form-control"
+          class="form-control commentFormTextarea display-block"
           id="comment_form_textarea"
           rows="1"
           name="txt"
@@ -114,20 +115,21 @@
           {{#if shouldAutofocusOnTextarea}}autofocus{{/if}}
 
           ></textarea>
-      </span>
-
+        </div>
+  
+  
        <p><i class="fa fa-microphone"></i>&nbsp; {{s.connectToPostPrompt}}</p>
        <div id="socialButtonsCommentForm">
             {{#if auth_opt_fb}}
       {{#unless hasFacebook}}
-        <button id="facebookButtonCommentForm" class="Btn facebookButton">
+        <button id="facebookButtonCommentForm" class="Btn socialButton facebookButton">
           <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
           {{s.connectFacebook}}</button>
       {{/unless}}
       {{/if}}
       {{#if auth_opt_tw}}
       {{#unless hasTwitter}}
-        <button id="twitterButtonCommentForm" class="Btn twitterButton">
+        <button id="twitterButtonCommentForm" class="Btn socialButton twitterButton">
         <i class="svgIcon">{{> iconFaTwitter25}}</i>
           {{s.connectTwitter}}</button>
       {{/unless}}
@@ -135,7 +137,7 @@
       </div>
 
        {{!-- ================ CHARACTER COUNT && BUTTON ================ --}}
-   <div>
+   <div class="submitButtonContainer">
       <span
         id="commentCharCount"
         aria-hidden="true" {{!-- don't show this to screen reader, since there's no problem --}}

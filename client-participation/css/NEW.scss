@@ -76,6 +76,7 @@ img{
     text-transform:none;
     line-height: 2rem;
     border-radius:2px;
+    display: flex;
 }
 
 .screen-reader-text{
@@ -329,8 +330,9 @@ color: white;
     border-radius: 1px;
     display:flex;
     flex-wrap:wrap;
-    justify-items:space-between;
+    justify-content: center;
     align-items: center;
+
 }
 
 .commentSubmitContainer > p{
@@ -343,7 +345,8 @@ color: white;
 .avatarContainer{}
 
 .commentFormTextareaContainer{
-    flex-basis:90%;
+    display: flex;
+    flex-wrap:nowrap;
 }
 
 .commentForm > label{
@@ -363,15 +366,23 @@ color: white;
 #socialButtonsCommentForm{
  display:flex;
  flex-wrap: wrap;
- justify-content:left;
- flex-basis:65%;
+ justify-content: center;
+}
+
+.socialButton{
+    margin-bottom:1rem;
+    border:1px solid;
+    background-color:#f1f4f6;
+
 }
 
 #facebookButtonCommentForm{
-    margin-bottom:1rem;
+    border-color: #55ACEE;
+    color: #55ACEE;
+
 }
 #twitterButtonCommentForm{    
-    margin-bottom:1rem;
+
 }
 
 #comment_form_controls{
@@ -380,8 +391,6 @@ color: white;
 }
 
 .commentSubmitClicked{
-    width: 40%;
-    margin-top: 0;
 }
 
 .comment_form_control_hideable{}
@@ -391,11 +400,17 @@ color: white;
     color: #32517b;
    margin-left:2rem; 
    font-weight:600;
+   align-self: center;
 }
 
 #commentCharCountExceeded{
     display: none;
     color:#F06A6A;
+}
+
+.submitButtonContainer{
+    display:flex;
+    wrap:nowrap;
 }
 
 .submitButton{
@@ -412,7 +427,7 @@ color: white;
 }
 
 .comment_sent_message > span {
-margin-left:5px;
+//margin-left:5px;
 }
 
 .avatar{
@@ -478,8 +493,26 @@ margin-left:5px;
     fill: white;
 }
 
-.twitterButton{}
-.svgIcon{}
+.twitterButton{
+    border-color: #55ACEE;
+    color: #55ACEE;
+}
+
+.twitterButton > .svgIcon{
+    color: #55ACEE;
+    fill: #55ACEE;
+}
+
+.facebookButton{
+    border-color: #3b5998;
+    color: #3b5998;
+}
+
+.facebookButton > .svgIcon{
+    color: #3b5998;
+    fill: #3b5998;
+}
+
 .Notification{
     margin:1.2rem;
 }
@@ -584,6 +617,7 @@ margin-left:5px;
     margin:0.5rem;
     min-height: 3.2rem;
     width: 17rem;
+    border-radius: 2px;
 
 
 }
