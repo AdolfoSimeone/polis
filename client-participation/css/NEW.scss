@@ -345,6 +345,7 @@ color: white;
 .avatarContainer{}
 
 .commentFormTextareaContainer{
+    flex-basis:100%;
     display: flex;
     flex-wrap:nowrap;
 }
@@ -377,8 +378,6 @@ color: white;
 }
 
 #facebookButtonCommentForm{
-    border-color: #55ACEE;
-    color: #55ACEE;
 
 }
 #twitterButtonCommentForm{    
@@ -398,9 +397,13 @@ color: white;
 #commentCharCount{
     //display: none; 
     color: #32517b;
-   margin-left:2rem; 
+    margin-left: auto;
+   margin-bottom:0.5rem;
    font-weight:600;
    align-self: center;
+   font-size: 1.2rem;
+   padding: 0 1rem;
+   
 }
 
 #commentCharCountExceeded{
@@ -409,6 +412,7 @@ color: white;
 }
 
 .submitButtonContainer{
+    flex-grow: 4;
     display:flex;
     wrap:nowrap;
 }
@@ -422,8 +426,7 @@ color: white;
     color: white;
     letter-spacing: 0.07em;
     min-width: 8rem;
-    
-    margin: 0rem 0rem 1rem 1rem;
+    margin: 0 0 1rem auto;
 }
 
 .comment_sent_message > span {
@@ -532,25 +535,18 @@ color: white;
 }
 
 #gatekeeperEmailCreate{}
+
 .FormVertical-group{}
 .FormLabel{}
 .FormControl{}
 .email{}
 
 #subscribeBtn{
-    text-transform: none;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
     background-color: #0090ff;
     color: white;
-    min-width: 110px;
-    height: 40px;
-    margin-left: 5px;
+    min-width: 8rem;
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 1rem;
 }
 .socialAvatar{
     width: 2.5rem;
