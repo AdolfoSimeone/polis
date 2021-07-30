@@ -7,6 +7,7 @@ module.exports = {
     ".+\\.pol\\.is$",
     "^xip\\.io$",
     ".+\\.xip\\.io$",
+    "^polis.spiralroads.de$",
   ],
 
   // Point to a polisServer instance (local recommended for dev)
