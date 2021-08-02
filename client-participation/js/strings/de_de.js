@@ -61,7 +61,7 @@ s.pctDisagreedOfGroup = "{{pct}}% von Gruppe {{group}} stimmten nicht zu";
 s.pctDisagreedLong = "{{pct}}% aller TeilnehmerInnen, die Statement {{comment_id}} bewertet haben, stimmten nicht zu.";
 s.pctAgreedOfGroupLong = "{{pct}}% aller TeilnehmerInnen in Gruppe {{group}}, die Statement {{comment_id}} bewertet haben, stimmten zu.";
 s.pctDisagreedOfGroupLong = "{{pct}}% aller TeilnehmerInnen in Gruppe {{group}}, die Statement {{comment_id}} bewertet haben, stimmten nicht zu.";
-s.commentSent = "Statement wurde gesendet! Die anderen TeilnehmerInnen werden benachrichtigt und können über Ihr Statement abstimmen.";
+s.commentSent = "<span style='font-weight: 700;'>Statement wurde gesendet!</span> Die anderen TeilnehmerInnen werden benachrichtigt und können über Ihr Statement abstimmen.";
 s.commentSendFailed = "Es gab einen Fehler beim Einreichen deines Statements.";
 s.commentSendFailedEmpty = "Es gab einen Fehler beim Einreichen deines Statements – Eingabefeld sollte nicht leer bleiben.";
 s.commentSendFailedTooLong = "Es gab einen Fehler beim Einreichen deines Statements – Das Statement ist zu lang.";
@@ -86,7 +86,7 @@ s.commentTooLongByChars = "Länge des Statements um {{CHARACTERS_COUNT}} Zeichen
 s.notSentSinceDemo = "(nicht wirklich, dies ist nur eine Demonstration)";
 s.submitComment = "Einreichen";
 s.tipStarred = "Als wichtig markiert.";
-s.participantHelpWelcomeText = "Willkommen zu einer neuen Art der Diskussion - <span style='font-weight: 700;'>stimme</span> über die Standpunkte der anderen TeilnehmerInnen <span style='font-weight: 700;'>ab</span> und <span style='font-weight: 700;'>teilen</span> Sie Ihren eigenen Standpunkt.";
+s.participantHelpWelcomeText = "Willkommen zu einer neuen Art der Diskussion - <span style='font-weight: 700;'>stimmen Sie</span> über die Standpunkte der anderen TeilnehmerInnen <span style='font-weight: 700;'>ab</span> und <span style='font-weight: 700;'>teilen</span> Sie Ihren eigenen Standpunkt.";
 s.participantHelpGroupsText = "DiskussionsteilnehmerInnen, die ähnlich abstimmen, <span style='font-weight: 700;'>werden zu einer Gruppe zusammengefasst.</span> Klicken Sie auf eine Gruppe, um zu sehen, welche gemeinsamen Standpunkte diese Gruppe vertritt <a style='font-weight: 700; cursor: pointer; text-decoration: underline' id='helpTextGroupsExpand'>... Mehr anzeigen</a>";
 s.participantHelpGroupsNotYetText = "Die Visualisierung startet, sobald sieben Teilnehmer abgestimmt haben.";
 s.helpWhatAreGroupsDetail = "<p>Sie kennen wahrscheinlich 'Andere Kunden kauften auch' auf Amazon oder 'personalisierte Empfehlungen' auf Netflix. Diese Dienste verwenden Statistiken, um Nutzer mit gemeinsamen Interessen zuzammenzufassen und darauf basierend entsprechende Produkt- oder Filmempfehlungen zu geben.</p> <p> Wenn Sie auf Pol.is über einen Kommentar abstimmen, werden Sie mit anderen Nutzern, die eine ähnliche Abstimmungspräferenz haben, in einer Gruppe zusammengefasst. Diese Gruppen werden unten angezeigt. Jede Gruppe besteht aus TeilnehmerInnen, die ähnliche Meinungen haben. Jede Diskussion bietet deshalb faszinierende Einblicke in das allgemeine Meinungsbild. Legen Sie los - klicken Sie auf eine Gruppe und erfahren Sie, welche Standpunkte diese Gruppe teilt und was sie einzigartig macht! </p>";

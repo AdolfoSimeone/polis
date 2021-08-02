@@ -7,19 +7,19 @@
   {{#if needSocial}}
 {{!-- ================ CONNECT FACEBOOK / TWITTER ================ --}}
 <div
-  class="socialButtonsVoteView"
+  class="socialButtons voteView"
 >
   <div class="protip"><p><i class="fa fa-microphone"></i>&nbsp; {{s.connectToVotePrompt}}</p></div>
   {{#if auth_opt_fb}}
   {{#unless hasFacebook}}
-    <button id="facebookButtonVoteView" class="facebookButton">
+    <button id="facebookButtonVoteView" class="Btn socialButton facebookButton">
       <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
       {{s.connectFacebook}}</button>
   {{/unless}}
   {{/if}}
   {{#if auth_opt_tw}}
   {{#unless hasTwitter}}
-    <button id="twitterButtonVoteView" class="twitterButton">
+    <button id="twitterButtonVoteView" class="Btn socialButton twitterButton">
     <i class="svgIcon">{{> iconFaTwitter25}}</i>
       {{s.connectTwitter}}</button>
   {{/unless}}
