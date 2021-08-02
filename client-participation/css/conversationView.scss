@@ -668,31 +668,13 @@ svg {
     color: #3b5998;
   }
 
-.facebookButton, .twitterButton {
-  cursor: pointer;
-  border: 0px;
-  color: white;
-  font-family: $sans-font;
-  font-weight: 300;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 14px;
-
+  
   i {
     font-size: 24px;
     color: white;
     position: relative;
     top: 4px;
   }
-}
-
-.twitterButton {
-  background-color: #55ACEE;
-}
-
-.facebookButton {
-  margin-right: 10px;
-  background-color: #3b5998;
 }
 
 .facebookCaveatText {
