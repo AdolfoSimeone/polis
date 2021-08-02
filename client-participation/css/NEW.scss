@@ -45,7 +45,7 @@ img{
 #header_root{}
 
 .header{
-        max-width: 1080,
+        max-width: 1080;
         margin: auto;
         display: flex;
         justify-content: space-between;
@@ -275,7 +275,7 @@ color: white;
 
 .voteboxBackground{}
 
-.voteboxBackground.1{
+.voteboxBackground-1{
     min-height: 30px;
     position:relative;
     z-index: 2;
@@ -284,7 +284,7 @@ color: white;
     height:98%;
 }
 
-.voteboxBottom.2{
+.voteboxBottom-2{
     min-height: 30px;
     position:relative;
     z-index: 1;
