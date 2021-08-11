@@ -116,9 +116,9 @@ VisView = function(params) {
   var strokeWidthGivenVisWidth = d3_old.scale.linear().range([0.2, 1.0]).domain([350, 800]).clamp(true);
   var hullStrokeWidthGivenVisWidth = d3_old.scale.linear().range([4, 12]).domain([350, 800]).clamp(true);
 
-  var grayHaloColor = "darkgrey";
+  var grayHaloColor = "#7e8899";
   var grayHaloColorSelected = grayHaloColor; // "rgba(0,0,0,0)";
-  var colorPull = "#2ecc71";
+  var colorPull = "#58CA93";
   var colorPullLabel = "rgb(0, 181, 77)";
   var colorPush = "#e74c3c"; // ALIZARIN
   var colorSummaryBlob = "#F9F9F9";

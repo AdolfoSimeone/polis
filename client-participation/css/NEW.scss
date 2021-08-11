@@ -18,6 +18,8 @@ box-sizing: border-box;
 
 p{
     font-size:1rem;
+    line-height: inherit;
+    margin-bottom: auto;
 }
 
 img{
@@ -127,7 +129,7 @@ margin: 2rem auto 1rem auto;
 
 .no_you_vote{
     color: white;
-    background-color: rgb(231, 76, 60);
+    background-color: #F06A6A;
     font-size: 20px;
     padding: 0px 10px;
     border-radius: 3px;
@@ -402,7 +404,7 @@ margin: 2rem auto 1rem auto;
 
 .socialButton{
     margin-bottom:1rem;
-    border:1px solid;
+    //border:1px solid;
     background-color:#f1f4f6;
     cursor: pointer;
 }
@@ -668,7 +670,7 @@ margin: 2rem auto 1rem auto;
     background-color:#F06A6A;
 }
 #passButton{
-    background-color: #9CA9BF;
+    background-color: hsl(218, 21%, 68%);
     padding-top: 0.8rem;
 }
 
