@@ -142,7 +142,7 @@
 {{#unless hasFbAndTw}}
 <div
   id="socialButtonsUnderReadReact"
-  class=""
+  class="socialButtons"
   >
   <p>
     {{s.socialConnectPrompt}}
@@ -150,7 +150,7 @@
   <div>
     {{#if auth_opt_fb_computed}}
     {{#unless hasFacebook}}
-      <button class="facebookButton" id="facebookButtonPtpt">
+      <button class="Btn socialButton facebookButton" id="facebookButtonPtpt">
         <span class="socialButtonText">
           <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
           {{s.connectFbButton}}
@@ -161,7 +161,7 @@
 
     {{#if auth_opt_tw_computed}}
     {{#unless hasTwitter}}
-      <button class="twitterButton" id="twitterButtonPtpt">
+      <button class="Btn socialButton twitterButton" id="twitterButtonPtpt">
       <span class="socialButtonText">
         <i class="svgIcon">{{> iconFaTwitter25}}</i>
         {{s.connectTwButton}}

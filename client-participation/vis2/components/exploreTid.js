@@ -48,7 +48,7 @@ const DataSentence = ({math, selectedTidCuration, selectedComment, repfulFor, St
           </svg>
         <p style={{
             fontSize: 14,
-            fontFamily: "Helvetica",
+            fontFamily: "Rubik",
             fontWeight: 500,
             maxWidth: 240,
             color: "rgb(180,180,180)"
@@ -78,8 +78,8 @@ const DataSentence = ({math, selectedTidCuration, selectedComment, repfulFor, St
           <path d={repfulForAgree ? checkmark : ban}/>
           </svg>
         <p style={{
-            fontSize: 14,
-            fontFamily: "Helvetica",
+            fontSize: 16,
+            fontFamily: "Rubik",
             fontWeight: 500,
             maxWidth: 240,
             color: "rgb(180,180,180)"
@@ -238,7 +238,7 @@ class ExploreTid extends React.Component {
           <p style={{
             width: this.props.browserDimensions > 768 ? 400 : 245,
             fontSize: 18,
-            fontFamily: ""Rubik", serif",
+            fontFamily: "Rubik",
           }}>
             {this.props.selectedComment ? this.props.selectedComment.txt : null}
           </p>

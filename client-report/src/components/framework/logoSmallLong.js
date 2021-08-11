@@ -27,7 +27,7 @@ class PolisLogo extends React.Component {
                   <g id="Group" transform="translate(3.000000, 3.000000)">
                     <polygon id="Polygon-1" fill="#03A9F4" points="20.4588192 0 40.9176384 11.75 40.9176384 35.25 20.4588192 47 9.6261623e-15 35.25 -3.55271368e-15 11.75"></polygon>
                     <path d="M5.85714286,13.9834711 L7.41904762,17.8677686" id="Line" stroke="#03A9F4" strokeWidth="0.3" strokeLinecap="square"></path>
-                    <text id="p." fontFamily="Georgia" fontSize="27" fontWeight="normal" fill="rgb(255,255,255)">
+                    <text id="p." fontFamily="Georgia" fontSize="2rem" fontWeight="normal" fill="rgb(255,255,255)">
                     <tspan x="12.1047619" y="28.3305785">p.</tspan>
                     </text>
                     <path d="M32.9952381,25.053719 L37.2904762,18.4504132" id="Line" stroke="rgb(255,255,255)" strokeWidth="0.3" strokeLinecap="square"></path>

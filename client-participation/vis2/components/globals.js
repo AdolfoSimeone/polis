@@ -1,8 +1,8 @@
 
 export const minParticipantsForVis = 7;
 
-export const sans = "Montserrat, ";
-export const serif = "Source Serif Pro, "Rubik"";
+export const sans = "Rubik, sans-serif";
+export const serif = "Rubik";
 export const paragraphWidth = 475;
 export const paragraphLineHeight = "24px";
 export const barChartWidth = 250;

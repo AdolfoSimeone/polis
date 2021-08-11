@@ -404,7 +404,7 @@ margin: 2rem auto 1rem auto;
 
 .socialButton{
     margin-bottom:1rem;
-    //border:1px solid;
+    /*border:1px solid;*/
     background-color:#f1f4f6;
     cursor: pointer;
 }
@@ -421,6 +421,7 @@ margin: 2rem auto 1rem auto;
 .twitterButton{
    // border-color: #55ACEE;
     color: #55ACEE;
+    color: #9CA9BF;
 }
 
 .twitterButton > .svgIcon{
@@ -670,7 +671,7 @@ margin: 2rem auto 1rem auto;
     background-color:#F06A6A;
 }
 #passButton{
-    background-color: hsl(218, 21%, 68%);
+    background-color: rgb(156, 169, 191);
     padding-top: 0.8rem;
 }
 
