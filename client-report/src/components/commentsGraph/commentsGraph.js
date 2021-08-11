@@ -80,8 +80,8 @@ class CommentsGraph extends React.Component {
               <text
                 style={{
                   fontFamily: "Georgia",
-                  fontSize: 14,
-                  fontStyle: "italic"
+                  fontSize: 16,
+                  //fontStyle: "italic"
                 }}
                 textAnchor="middle">
 

@@ -166,8 +166,8 @@ class Graph extends React.Component {
             <g transform={`translate(${globals.side / 2}, ${15})`}>
               <text
                 style={{
-                  fontFamily: "Georgia",
-                  fontSize: 14,
+                  fontFamily: "Rubik",
+                  fontSize: 16,
                   fontStyle: "italic"
                 }}
                 textAnchor="middle">

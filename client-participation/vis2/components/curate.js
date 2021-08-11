@@ -64,8 +64,8 @@ class Curate extends React.Component {
         }}>
           <p style={{
               marginRight: 10,
-              fontSize: 14,
-              fontFamily: "Georgia",
+              fontSize: 16,
+              fontFamily: "Rubik",
               fontStyle: "italic"
             }}>
             {this.props.Strings.group_123}
