@@ -133,7 +133,7 @@ const sql_reports = sql.define({
   ],
 });
 
-//TODO declare new tables here
+//New tables here
 const sql_user_stats = sql.define({
   name: 'user_stats',
   columns: [
@@ -219,4 +219,12 @@ module.exports = {
   sql_participants_extended,
   sql_reports,
   sql_users,
+  //New tables
+  sql_user_stats,
+  sql_user_invites,
+  sql_info_resources,
+  sql_user_info_resources,
+  sql_quizzes,
+  sql_quiz_options,
+  sql_user_quizzes
 };
