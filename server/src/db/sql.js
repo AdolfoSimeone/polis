@@ -134,8 +134,82 @@ const sql_reports = sql.define({
 });
 
 //TODO declare new tables here
-//user_score
-//messages (TBD name and structure appropriate for multiple events)
+const sql_user_stats = sql.define({
+  name: 'user_stats',
+  columns: [
+    "uid",
+    "invited_count",
+    "invited_score",
+    "welcome_count",
+    "welcome_score",
+    "quiz_count",
+    "quiz_score",
+    "date_created",
+    "date_updated"
+  ],
+});
+
+const sql_user_invites = sql.define({
+  name: 'user_invites',
+  columns: [
+    "uid",
+    "uid_invited",
+    "date_accepted"
+  ],
+});
+
+const sql_info_resources = sql.define({
+  name: 'info_resources',
+  columns: [
+    "rid",
+    "title",
+    "description",
+    "link",
+    "score",
+    "date_created",
+    "date_updated"
+  ],
+});
+
+const sql_user_info_resources = sql.define({
+  name: 'user_info_resources',
+  columns: [
+    "uid",
+    "rid",
+    "date_viewed"
+  ],
+});
+
+const sql_quizzes = sql.define({
+  name: 'quizzes',
+  columns: [
+    "qid",
+    "rid",
+    "question",
+    "score"
+  ],
+});
+
+const sql_quiz_options = sql.define({
+  name: 'quiz_options',
+  columns: [
+    "qid",
+    "opid",
+    "option_text",
+    "is_correct"
+  ],
+});
+
+const sql_user_quizzes = sql.define({
+  name: 'user_quizzes',
+  columns: [
+    "uid",
+    "rid",
+    "qid",
+    "date_attempt",
+    "attempt_count"
+  ],
+});
 
 module.exports = {
   sql_conversations,

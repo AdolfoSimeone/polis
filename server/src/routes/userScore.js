@@ -5,5 +5,7 @@ module.exports = (app, helpers) => {
 
     app.get("/api/v3/userScore");
 
-        
+    app.get("/info/");
+    
+    app.post("/info/");
 };

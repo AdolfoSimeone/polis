@@ -151,11 +151,14 @@ module.exports = Handlebones.ModelView.extend({
     //If remaining and total come up emptzy    
     if (!remaining){
       progress = 100;
-      total = myVoteCount = ctx.votesByMe.length;
+      myVoteCount = ctx.votesByMe.length;
     }
     else{
       myVoteCount = ctx.votesByMe ? ctx.votesByMe.length : ctx.total - remaining;
       progress = myVoteCount / ctx.total * 100;
+    }
+    if (!ctx.total) {
+      ctx.total = myVoteCount;
     }
     ctx.myVoteCount = myVoteCount;
     ctx.progress = progress;
