@@ -238,7 +238,7 @@ class ExploreTid extends React.Component {
           <p style={{
             width: this.props.browserDimensions > 768 ? 400 : 245,
             fontSize: 18,
-            fontFamily: ""Rubik", serif",
+            fontFamily: "Rubik, serif",
           }}>
             {this.props.selectedComment ? this.props.selectedComment.txt : null}
           </p>
