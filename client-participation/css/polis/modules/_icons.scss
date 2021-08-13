@@ -13,7 +13,7 @@
 
 .icon--check {
   &:before {
-    color: $green;
+    color: #58CA93;
     @include fa-checkmark();
     margin-right: 0.5em;
   }
