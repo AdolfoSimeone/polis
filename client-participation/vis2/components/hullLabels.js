@@ -30,7 +30,7 @@ const Label = ({ptptCount, centroid, gid, selectedGroup, handleClick}) => {
       transform={`translate(${centroid.x},${centroid.y})`}
       onClick={() => {handleClick(gid)}}>
       <rect
-        height={20}
+        height={48}
         width={getBackgroundRectWidth(ptptCount)}
         rx="4" ry="4"
         fill={selectedGroup === gid ? "#0090ff": "rgb(248,248,248)"}
@@ -41,7 +41,7 @@ const Label = ({ptptCount, centroid, gid, selectedGroup, handleClick}) => {
         style={{
           fontWeight: 700,
           fill: selectedGroup === gid ? "white" : "black",
-          fontSize: 12,
+          fontSize: 16,
           pointerEvents: "none",
           userSelect: "none"
         }}>
@@ -53,7 +53,7 @@ const Label = ({ptptCount, centroid, gid, selectedGroup, handleClick}) => {
         style={{
           fontWeight: 300,
           fill: selectedGroup === gid ? "white" : "black",
-          fontSize: 12,
+          fontSize: 16,
           pointerEvents: "none",
           userSelect: "none"
         }}>
