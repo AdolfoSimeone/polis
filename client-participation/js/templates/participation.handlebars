@@ -142,30 +142,26 @@
 {{#unless hasFbAndTw}}
 <div
   id="socialButtonsUnderReadReact"
-  class="socialButtons"
+  class="combox"
   >
   <p>
     {{s.socialConnectPrompt}}
   </p>
-  <div>
+  <div class="socialButtons">
     {{#if auth_opt_fb_computed}}
     {{#unless hasFacebook}}
-      <button class="Btn socialButton facebookButton" id="facebookButtonPtpt">
-        <span class="socialButtonText">
+      <button class="Btn socialButton BtnCombox facebookButton" id="facebookButtonPtpt">
           <i class="svgIcon">{{> iconFaFacebookSquare25}}</i>
           {{s.connectFbButton}}
-        </span>
       </button>
     {{/unless}}
     {{/if}}
 
     {{#if auth_opt_tw_computed}}
     {{#unless hasTwitter}}
-      <button class="Btn socialButton twitterButton" id="twitterButtonPtpt">
-      <span class="socialButtonText">
+      <button class="Btn socialButton BtnCombox twitterButton" id="twitterButtonPtpt"> 
         <i class="svgIcon">{{> iconFaTwitter25}}</i>
         {{s.connectTwButton}}
-      </span>
       </button>
     {{/unless}}
     {{/if}}

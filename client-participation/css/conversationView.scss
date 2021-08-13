@@ -46,20 +46,9 @@ body {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-p {
-  margin: 0 0 10px;
-}
-img {
-  vertical-align: middle;
-}
-img {
-  border: 0;
-}
-.Btn-alt {
-  background-color: #e3e4e5;
-  color: #3498db;
-  letter-spacing: 0.05em;
-}
+
+
+
 .Btn-small {
   padding: 0.4em 1em;
   border-radius: 4px;
@@ -77,7 +66,7 @@ img {
   border: 0;
   font-size: 16px;
   font-family: "Noto Sans JP", Arial, sans-serif;
-  font-weight: 700;
+  //font-weight: 700;
   text-transform: uppercase;
 }
 
