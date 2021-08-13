@@ -53,7 +53,7 @@ img{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        color:  #0f224f;
+        color:  rgb(15, 34, 79);
 }
 
 .headerbox{
@@ -163,7 +163,7 @@ margin: 2rem auto 1rem auto;
 }
 
 .voteDescription{
-    font-size:1.2rem;
+    font-size:1.25rem;
     margin:1rem auto 2rem auto;
 }
 
@@ -176,12 +176,12 @@ margin: 2rem auto 1rem auto;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    line-height: 1rem;
+    line-height: 1.25rem;
     //font-size: 0.8rem;
     color: #002454;
     font-family: 'Barlow', 'Noto Sans JP', Arial, sans-serif;
     font-weight:300;
-    box-shadow: 0 2px 4px #d2dbe3
+    box-shadow: 0 2px 4px #d2dbe3;
 }
 
 .combox a, .combox li{
@@ -430,6 +430,12 @@ background-color:#fff;
 #socialButtonsCommentForm{
 }
 
+.socialButtons{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .socialButton{
     margin-bottom:1rem;
     /*border:1px solid;*/
@@ -492,7 +498,7 @@ background-color:#fff;
    margin-bottom:0.5rem;
    font-weight:600;
    align-self: center;
-   font-size: 1.2rem;
+   font-size: 1.25rem;
    padding: 0 1rem;
    
 }
@@ -568,12 +574,6 @@ background-color:#fff;
     flex-wrap:wrap;
 }
 
-.socialButtons{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 #facebookButtonVoteView{
 
 }
@@ -584,10 +584,15 @@ background-color:#fff;
 
 
 .Notification{
-    margin:1.2rem;
+    margin:1.25rem;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .Notification--warning{}
+
 .Notification > .fa-check-square-o{
     font-size: 20px;
     color: #58CA93;
@@ -629,7 +634,7 @@ background-color:#fff;
     display: inline;
     position: relative;
     text-align: center;
-    height: 2rem;
+    //height: 2rem;
     font-weight: 300;
     flex-basis: auto;
 }
