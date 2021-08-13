@@ -9931,6 +9931,8 @@ Thanks for using Polis!
         "multipart/form-data",
         function (e, data, res) {
           if (e) {
+            console.error("TESTING Key: " + process.env.TWITTER_CONSUMER_KEY);
+            console.error("TESTING Secret: " + process.env.TWITTER_CONSUMER_SECRET);
             console.error("get twitter token failed");
             console.error(e);
             reject(e);
