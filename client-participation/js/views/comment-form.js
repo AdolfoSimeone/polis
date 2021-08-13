@@ -111,7 +111,7 @@ module.exports = Handlebones.ModelView.extend({
     }
   },
   textChange: function() {
-    that.$("#success_checkmark_icon").hide();
+    this.$("#success_checkmark_icon").hide();
     this.hideMessage("#comment_sent_message");
     this.hideMessage("#comment_send_failed_message");
     this.hideMessage("#comment_send_failed_empty_message");
@@ -197,7 +197,7 @@ module.exports = Handlebones.ModelView.extend({
   },
   submitComment: function(e){
     var that = this;
-    that.$("#success_checkmark_icon").hide();
+    this.$("#success_checkmark_icon").hide();
     this.hideMessage("#comment_sent_message");
     this.hideMessage("#comment_send_failed_message");
     this.hideMessage("#comment_send_failed_empty_message");
