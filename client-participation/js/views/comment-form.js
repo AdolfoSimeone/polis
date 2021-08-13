@@ -224,6 +224,7 @@ module.exports = Handlebones.ModelView.extend({
             that.$("#comment_form_textarea").val("");
             that.hideFormControls();
             that.showMessage("#comment_sent_message");
+            that.$("#commentCharCount").hide();
             that.$("#success_checkmark_icon").show();
 
           }, function(err) {
@@ -314,6 +315,7 @@ module.exports = Handlebones.ModelView.extend({
     attrs.txt = attrs.txt.replace(/\n/g, " ");
 
     if (Utils.isDemoMode()) {
+      that.$("#commentCharCount").hide();
       that.$("#success_checkmark_icon").show();
       that.showMessage("#comment_sent_message");
       that.trigger("commentSubmitted");
