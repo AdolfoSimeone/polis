@@ -62,7 +62,7 @@ module.exports = Handlebones.CollectionView.extend({
 
 
         // draw disagree part
-        drawCtx.strokeStyle = "rgb(231, 76, 60)"; // disagree_red
+        drawCtx.strokeStyle = "#F06A6A"; // disagree_red
         // drawCtx.arc(width/2, width/2, radius,
         //   -Math.PI/2, // arc starts at top
         //   - fullArc * (1 - that.model.get("percentAgree") / 100) - Math.PI/2, // end angle of arc

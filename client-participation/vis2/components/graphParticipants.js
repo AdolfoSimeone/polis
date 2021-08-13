@@ -36,7 +36,7 @@ const Participant = ({ptpt, tweenX, tweenY}) => {
 const Bucket = ({pt}) => {
   return <circle
     r={0}
-    fill={/* globals.groupColor(pt.gid)*/ "rgb(180,180,180)"}
+    fill={/* globals.groupColor(pt.gid)*/ "rgb(156, 169, 191)"}
     key={pt.bid}
     cx={pt.x}
     cy={pt.y}/>;

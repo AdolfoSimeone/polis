@@ -30,7 +30,7 @@ const GraphAxes = ({yCenter, xCenter, report}) => {
       <g transform={`translate(${globals.side / 2}, ${globals.side - 20})`}>
         {report.label_x_neg ? <text
           style={{
-            fontFamily: "Georgia",
+            fontFamily: "Rubik",
             fontSize: 14
           }}
           textAnchor="start"
@@ -42,7 +42,7 @@ const GraphAxes = ({yCenter, xCenter, report}) => {
         </text> : ""}
         {report.label_x_pos ? <text
           style={{
-            fontFamily: "Georgia",
+            fontFamily: "Rubik",
             fontSize: 14
           }}
           textAnchor="end"
@@ -58,7 +58,7 @@ const GraphAxes = ({yCenter, xCenter, report}) => {
       <g transform={`translate(${30}, ${globals.side / 2}) rotate(270)`}>
         {report.label_y_neg ? <text
           style={{
-            fontFamily: "Georgia",
+            fontFamily: "Rubik",
             fontSize: 14
           }}
           textAnchor="start"
@@ -70,7 +70,7 @@ const GraphAxes = ({yCenter, xCenter, report}) => {
         </text> : ""}
         {report.label_y_pos ? <text
           style={{
-            fontFamily: "Georgia",
+            fontFamily: "Rubik",
             fontSize: 14
           }}
           textAnchor="end"
