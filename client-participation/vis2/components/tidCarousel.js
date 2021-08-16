@@ -140,7 +140,7 @@ class TidCarousel extends React.Component {
                     border: (this.props.selectedComment && this.props.selectedComment.tid === c.tid) ? "1px solid rgb(80, 80, 80)" :  "none",
                     padding: "6px 1px",
                     fontWeight: (this.props.selectedComment && this.props.selectedComment.tid === c.tid) ? 700 : 300,
-                    backgroundColor: "rgb(255,255,255, 0.7)",
+                    backgroundColor: "rgba(255,255,255, 0.7)",
                     color: "rgb(0,0,0)",
                     borderRadius: 4,
                   }}
