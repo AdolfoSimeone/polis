@@ -2,18 +2,18 @@ import React from "react";
 import * as globals from "./globals";
 
 const getBackgroundRectWidth = (ptptCount) =>  {
-  let width = 46; /* smallest number */
+  let width = 48; /* smallest number */
   if (ptptCount >= 100 && ptptCount < 1000) {
-    width = 52;
+    width = 56;
   } else if (ptptCount > 1000) {
-    width = 59;
+    width = 64;
   }
   return width;
 }
 
 const Users = ({selectedGroup}) => {
   return (
-    <g width={7} fill={selectedGroup ? "white" : "black"} transform={`translate(0,-9)`}>
+    <g width={8} fill={selectedGroup ? "white" : "black"} transform={`translate(0,-9)`}>
       <ellipse cx="1.99335548" cy="1.42348754" rx="1.32890365" ry="1.42348754"></ellipse>
       <ellipse cx="7.97342193" cy="1.42348754" rx="1.32890365" ry="1.42348754"></ellipse>
       <ellipse cx="4.9833887" cy="3.55871886" rx="1.99335548" ry="2.13523132"></ellipse>
@@ -30,14 +30,15 @@ const Label = ({ptptCount, centroid, gid, selectedGroup, handleClick}) => {
       transform={`translate(${centroid.x},${centroid.y})`}
       onClick={() => {handleClick(gid)}}>
       <rect
-        height={48}
+        height={40}
         width={getBackgroundRectWidth(ptptCount)}
         rx="4" ry="4"
         fill={selectedGroup === gid ? "#0090ff": "rgb(248,248,248)"}
-        x={-16}
-        y={-15}/>
+        x={-18}
+        y={-25}
+        />
       <text
-        x={-11}
+        x={-12}
         style={{
           fontWeight: 700,
           fill: selectedGroup === gid ? "white" : "black",
@@ -49,7 +50,7 @@ const Label = ({ptptCount, centroid, gid, selectedGroup, handleClick}) => {
       </text>
       <Users selectedGroup={selectedGroup === gid}/>
       <text
-        x={12}
+        x={14}
         style={{
           fontWeight: 300,
           fill: selectedGroup === gid ? "white" : "black",
