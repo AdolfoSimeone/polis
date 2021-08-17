@@ -983,7 +983,8 @@ helpersInitialized().then((o) =>{
   app.get(/^\/company$/, fetchIndexForAdminPage);
 
   app.get(/^\/report\/r?[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForReportPage);
-  
+  app.get(/^\/report\/c?[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForReportPage);
+
   app.get(/^\/thirdPartyCookieTestPt1\.html$/, fetchThirdPartyCookieTestPt1);
   app.get(/^\/thirdPartyCookieTestPt2\.html$/, fetchThirdPartyCookieTestPt2);
 
