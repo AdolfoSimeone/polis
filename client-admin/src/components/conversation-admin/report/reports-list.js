@@ -25,10 +25,16 @@ class ReportsList extends React.Component {
       conversation_id: match.params.conversation_id
     })
     reportsPromise.then(reports => {
+      if (reports.length > 1){
+        reports = reports.slice(reports.length - 1);
+      }
       this.setState({
         loading: false,
         reports: reports
       })
+      if (reports.length == 0){
+        this.createReportClicked();
+      }
     })
   }
 
@@ -37,6 +43,9 @@ class ReportsList extends React.Component {
 
     if (zid_metadata.is_mod) {
       this.getData()
+    }
+    else if (this.state.reports.length == 0){
+      this.createReportClicked();
     }
   }
 
@@ -68,11 +77,13 @@ class ReportsList extends React.Component {
           }}>
           Report
         </Heading>
+        {/* 
         <Box sx={{ mb: [3, null, 4] }}>
           <Button onClick={this.createReportClicked.bind(this)}>
             Create report url
           </Button>
         </Box>
+        */}
         {this.state.reports.map(report => {
           return (
             <Box sx={{ mb: [2] }} key={report.report_id}>
