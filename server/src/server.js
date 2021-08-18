@@ -13899,6 +13899,7 @@ CREATE TABLE slack_user_invites (
           console.error(err.stack);
         }
         res.status(500).end();
+        //fail(res, 500, "polis_err_missing_twitter_image");
       });
   }
   let handle_GET_conditionalIndexFetcher = (function () {
