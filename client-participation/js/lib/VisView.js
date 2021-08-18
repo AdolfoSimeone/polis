@@ -1741,10 +1741,10 @@ VisView = function(params) {
 
     if (clusterIsSelected()) {
       update.selectAll(".hideWhenGroupSelected")
-      .style("visibility", "hidden"); 
+      .style("visibility", "hidden");
     } else {
       update.selectAll(".hideWhenGroupSelected")
-      .style("visibility", "visible"); 
+      .style("visibility", "visible");
     }
 
     update.selectAll(".grayHalo")
