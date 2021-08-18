@@ -182,6 +182,8 @@ helpersInitialized().then((o) =>{
     handle_PUT_ptptois,
     handle_PUT_reports,
     handle_PUT_users,
+
+    handle_GET_conversationReport,
   } = o;
 
   const {
@@ -983,7 +985,11 @@ helpersInitialized().then((o) =>{
   app.get(/^\/company$/, fetchIndexForAdminPage);
 
   app.get(/^\/report\/r?[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForReportPage);
-  app.get(/^\/report\/c?[0-9][0-9A-Za-z]+(\/.*)?/, fetchIndexForReportPage);
+  // New endpoint for reports
+  app.get("/viewreport/:conversation_id", 
+    moveToBody,
+    need('conversation_id', getConversationIdFetchZid, assignToPCustom('zid')),
+    handle_GET_conversationReport);
 
   app.get(/^\/thirdPartyCookieTestPt1\.html$/, fetchThirdPartyCookieTestPt1);
   app.get(/^\/thirdPartyCookieTestPt2\.html$/, fetchThirdPartyCookieTestPt2);

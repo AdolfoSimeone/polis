@@ -9425,7 +9425,21 @@ Email verified! You can close this tab or hit the back button.
         }
       });
   }
-
+  async function handle_GET_conversationReport(req, res) {
+    console.log("Params: " + req.p.zid);
+    let zid = req.p.zid;
+    //TODO Check if user is moderator
+    let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
+    
+    if (reports.length === 0){
+      await createReport(zid);
+      reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+    }
+    
+    var rid = reports[0].rid;
+    res.redirect("/report/" + rid);
+    return;
+  }
   function encodeParams(o) {
     let stringifiedJson = JSON.stringify(o);
     let encoded = "ep1_" + strToHex(stringifiedJson);
@@ -9931,8 +9945,6 @@ Thanks for using Polis!
         "multipart/form-data",
         function (e, data, res) {
           if (e) {
-            console.error("TESTING Key: " + process.env.TWITTER_CONSUMER_KEY);
-            console.error("TESTING Secret: " + process.env.TWITTER_CONSUMER_SECRET);
             console.error("get twitter token failed");
             console.error(e);
             reject(e);
@@ -14140,6 +14152,7 @@ CREATE TABLE slack_user_invites (
     handle_PUT_reports,
     handle_PUT_users,
 
+    handle_GET_conversationReport,
     // Debugging
     //getNextPrioritizedComment,
     //getPca
