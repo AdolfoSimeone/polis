@@ -9436,8 +9436,8 @@ Email verified! You can close this tab or hit the back button.
       reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
     }
     
-    var rid = reports[0].rid;
-    res.redirect("/report/" + rid);
+    var report_id = reports[0].report_id;
+    res.redirect("/report/" + report_id);
     return;
   }
   function encodeParams(o) {
