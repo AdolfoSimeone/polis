@@ -9426,18 +9426,23 @@ Email verified! You can close this tab or hit the back button.
       });
   }
   async function handle_GET_conversationReport(req, res) {
-    console.log("Params: " + req.p.zid);
     let zid = req.p.zid;
     //TODO Check if user is moderator
-    let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
-    
-    if (reports.length === 0){
-      await createReport(zid);
-      reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+    try{
+      let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
+      
+      if (reports.length === 0){
+        await createReport(zid);
+        reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+      }
+      
+      var report_id = reports[0].report_id;
+      res.redirect("/report/" + report_id);
+      
     }
-    
-    var report_id = reports[0].report_id;
-    res.redirect("/report/" + report_id);
+    catch (e){
+      console.log(e);
+    }
     return;
   }
   function encodeParams(o) {
