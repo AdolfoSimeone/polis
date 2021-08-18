@@ -9438,10 +9438,10 @@ Email verified! You can close this tab or hit the back button.
       
       var report_id = reports[0].report_id;
       res.redirect("/report/" + report_id);
-      
     }
     catch (e){
       console.log(e);
+      fail(res, 500, "polis_err_view_reports", err);
     }
     return;
   }
