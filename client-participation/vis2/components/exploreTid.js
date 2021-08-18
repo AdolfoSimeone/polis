@@ -42,16 +42,17 @@ const DataSentence = ({math, selectedTidCuration, selectedComment, repfulFor, St
         <svg height={40} style={{
             display: "inline",
             marginRight: 10,
+            marginTop: 16,
             fill: repfulForAgree ? globals.colors.agree : globals.colors.disagree
           }} viewBox="0 0 1792 1792">
           <path d={repfulForAgree ? checkmark : ban}/>
           </svg>
         <p style={{
-            fontSize: 14,
-            fontFamily: "Rubik",
+            fontSize: 16,
+            fontFamily: "Barlow",
             fontWeight: 500,
-            maxWidth: 240,
-            color: "rgb(180,180,180)"
+            flexBasis: 280,
+            color: "rgb(156, 169, 191)"
           }}>
           {s}
         </p>
@@ -127,7 +128,7 @@ class ExploreTid extends React.Component {
     let agreeButton = (
       <button style={{
         border: "none",
-        fontSize: 14,
+        fontSize: 16,
         backgroundColor: "transparent",
         fontWeight: "bold",
         cursor: "pointer",
@@ -146,7 +147,7 @@ class ExploreTid extends React.Component {
     let disagreeButton = (
       <button style={{
         border: "none",
-        fontSize: 14,
+        fontSize: 16,
         backgroundColor: "transparent",
         fontWeight: "bold",
         cursor: "pointer",
@@ -167,7 +168,7 @@ class ExploreTid extends React.Component {
       <button
         style={{
           border: "none",
-          fontSize: 14,
+          fontSize: 16,
           backgroundColor: "transparent",
           fontWeight: "bold",
           cursor: "pointer",
@@ -213,7 +214,7 @@ class ExploreTid extends React.Component {
     if (!this.props.selectedComment) {return null}
     return (
       <div style={{
-          borderRadius: 4,
+          borderRadius: 2,
           padding: "10px 10px 10px 10px",
           width:"100%",
           minHeight: 145,
@@ -223,7 +224,7 @@ class ExploreTid extends React.Component {
           alignItems: "baseline",
         }}>
         <p style={{
-            fontSize: 18,
+            fontSize: 16,
             marginRight: 20,
             fontWeight: "700",
           }}>
@@ -237,7 +238,7 @@ class ExploreTid extends React.Component {
           }}>
           <p style={{
             width: this.props.browserDimensions > 768 ? 400 : 245,
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: "Rubik, sans-serif",
           }}>
             {this.props.selectedComment ? this.props.selectedComment.txt : null}
