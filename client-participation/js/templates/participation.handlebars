@@ -182,9 +182,6 @@
   class="commentForm  container{{#if no_write}}display-none{{/if}}"
   >
   {{view commentForm}}
-  <div id="participationReportButton" class="Btn subscribeBtn">
-    <a href="/viewreport/{{conversation_id}}">Report</a>
-  </div>
 </section>
 
 <section class="visualisation {{#if no_vis}}display-none{{/if}}"> {{!-- no_vis toggle wrapper --}}
@@ -211,11 +208,17 @@
           {{{s.participantHelpGroupsNotYetText}}}
         </span>
       </p>
-       <div id="comboxVisualisationMore">
+
+      <div id="comboxVisualisationMore">
         {{{s.helpWhatAreGroupsDetail}}}
       </div>
-      
-    </div>
+
+          <div id="participationReportButton" class="Btn blueBtn">
+    <a href="/viewreport/{{conversation_id}}">Report</a>
+   </div>
+
+         </div>
+
   {{/if}}
 
 
