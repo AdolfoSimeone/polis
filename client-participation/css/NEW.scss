@@ -104,6 +104,7 @@ img{
     display: flex;
     justify-content: center;
     box-shadow: 0 1px 2px #99a4b5;
+    margin:auto;
 }
 
 .Btn-small {
@@ -265,7 +266,14 @@ background-color:#fff;
     letter-spacing: 0.04em;
 }
 
-
+.blueBtn{
+    background-color: #0090ff;
+    color: white;
+    min-width: 8rem;
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+}
 
 #vis_section{}
 #visualization_div{}
@@ -618,14 +626,6 @@ background-color:#fff;
 .FormControl{}
 .email{}
 
-.blueBtn{
-    background-color: #0090ff;
-    color: white;
-    min-width: 8rem;
-    display: inline-block;
-    margin-top: 1rem;
-    font-weight: 500;
-}
 
 .socialAvatar{
     width: 2.5rem;
