@@ -151,7 +151,7 @@ class Graph extends React.Component {
         <svg width={globals.sideWithPadding} height={globals.svgHeightWithPadding} style={{
           transform: "scale("+svgScale+")",
           transformOrigin: "0% 0%",
-          marginBottom: svgNegativeMargin}
+          margin: "auto"}
         }>
           <filter id="grayscale">
              <feColorMatrix type="saturate" values="0"/>
