@@ -73,8 +73,15 @@ function sendViaMailgun(sender, recipient, subject, text){
     subject,
     text
   };
-  mailgun.messages().send(data, (error, body) => {
-
+  return new Promise((resolve, reject) => {
+    mailgun.messages().send(data, (error, body) => {
+      if (error){
+        reject(error);
+      }
+      else{
+        resolve();
+      }
+    });
   });
 }
 
@@ -98,13 +105,12 @@ function sendTextEmail(
   const mailOptions = getMailOptions(thisTransportType);
   const transporter = nodemailer.createTransport(mailOptions);
   if (thisTransportType === 'mailgun'){
-    sendViaMailgun(
+    return sendViaMailgun(
       sender,
       recipient,
       subject,
       text
     );
-    return;
   }
   let promise = transporter
     .sendMail({ from: sender, to: recipient, subject: subject, text: text })
