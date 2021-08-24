@@ -224,6 +224,7 @@ module.exports = (app, helpers) => {
         handle_POST_auth_deregister,
         handle_POST_auth_facebook,
         handle_POST_auth_new,
+        handle_POST_auth_pwresettoken,
         need,
         want
     });
