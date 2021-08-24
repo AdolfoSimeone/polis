@@ -55,6 +55,23 @@ function getMailOptions(transportType) {
   }
 }
 
+function getMailgunClient(){
+  const mailgunAuth = {
+    apiKey: process.env.MAILGUN_API_KEY || "unset-value",
+    domain: process.env.MAILGUN_DOMAIN || "unset-value",
+    host: "api.eu.mailgun.net",
+  };
+  const mailgun = require('mailgun-js')(mailgunAuth);
+  return mailgun;
+}
+
+function sendViaMailgun(data){
+  const mailgun = getMailgunClient();
+  mailgun.messages().send(data, (error, body) => {
+
+  });
+}
+
 function sendTextEmail(
   sender,
   recipient,
