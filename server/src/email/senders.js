@@ -40,6 +40,7 @@ function getMailOptions(transportType) {
           // TODO: Suppress error thrown by mailgun library when unset.
           api_key: process.env.MAILGUN_API_KEY || "unset-value",
           domain: process.env.MAILGUN_DOMAIN || "unset-value",
+          host: "api.eu.mailgun.net",
         },
       };
       return mg(mailgunAuth);
