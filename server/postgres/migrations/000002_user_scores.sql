@@ -33,6 +33,7 @@ CREATE TABLE info_resources(
 CREATE TABLE user_info_resources(
     uid INTEGER NOT NULL REFERENCES users(uid),
     rid INTEGER NOT NULL REFERENCES info_resources(rid),
+    score INTEGER NOT NULL DEFAULT 0,
     date_viewed DATETIME
 );
 
@@ -55,7 +56,7 @@ CREATE TABLE quiz_options(
 -- Quizzes completed by each user
 CREATE TABLE user_quizzes(
     uid INTEGER NOT NULL REFERENCES users(uid),
-    rid INTEGER NOT NULL REFERENCES info_resources(rid),
+    rid INTEGER NOT NULL REFERENCES info_resources(rid), 
     qid INTEGER NOT NULL REFERENCES quizzes(qid),
     date_attempt DATETIME,
     attempt_count INTEGER NOT NULL DEFAULT 0
