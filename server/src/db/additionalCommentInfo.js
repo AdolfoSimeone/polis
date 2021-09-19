@@ -5,15 +5,19 @@ const pgQueryP_metered_readOnly = pg.queryP_metered_readOnly;
 const pgQueryP_readOnly = pg.queryP_readOnly;
 const pgQueryP_readOnly_wRetryIfEmpty = pg.queryP_readOnly_wRetryIfEmpty;
 const SQL = require("./sql");
+const sql_additional_comment_info = SQL.sql_additional_comment_info;
 
-export const getCommentAdditionalInfo = () => {
-
+export const getAdditionalCommentInfo = () => {
+    let q = sql_additional_comment_info
+        .select(sql_additional_comment_info.star())
+        .from(sql_additional_comment_info)
+        .where();
 }
 
-export const saveCommentAdditionalInfo = () => {
-
+export const saveAdditionalCommentInfo = () => {
+    let q;
 }
 
-export const deleteCommentAdditionalInfo = () => {
-    
+export const deleteAdditionalCommentInfo = () => {
+    let q;
 }

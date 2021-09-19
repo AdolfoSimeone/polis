@@ -1,17 +1,13 @@
-const handle_POST_additionalCommentInfo = () => {
+import { saveAdditionalCommentInfo, getAdditionalCommentInfo } from '../db/additionalCommentInfo';
 
+export const handle_POST_additionalCommentInfo = (req, res) => {
+    saveAdditionalCommentInfo();
 }
 
-const handle_GET_additionalCommentInfo = () => {
-
+export const handle_GET_additionalCommentInfo = (req, res) => {
+    getAdditionalCommentInfo();
 }
 
-const handle_PUT_additionalCommentInfo = () => {
-
-}
-
-module.exports =  {
-    handle_POST_additionalCommentInfo,
-    handle_GET_additionalCommentInfo,
-    handle_PUT_additionalCommentInfo
+export const handle_PUT_additionalCommentInfo = (req, res) => {
+    saveAdditionalCommentInfo();
 }
