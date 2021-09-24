@@ -13,6 +13,7 @@ module.exports = (app, helpers) => {
         handle_POST_auth_deregister,
         handle_POST_auth_facebook,
         handle_POST_auth_new,
+        handle_POST_auth_pwresettoken,
         need,
         want
     } = helpers;
@@ -23,7 +24,7 @@ module.exports = (app, helpers) => {
 
     app.post("/api/v3/auth/pwresettoken",
         need('email', getEmail, assignToP),
-        handle_POST_auth_password);
+        handle_POST_auth_pwresettoken);
 
     app.post("/api/v3/auth/deregister",
         want("showPage", getStringLimitLength(1, 99), assignToP),

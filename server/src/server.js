@@ -9411,18 +9411,23 @@ Email verified! You can close this tab or hit the back button.
       });
   }
   async function handle_GET_conversationReport(req, res) {
-    console.log("Params: " + req.p.zid);
     let zid = req.p.zid;
     //TODO Check if user is moderator
-    let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
-    
-    if (reports.length === 0){
-      await createReport(zid);
-      reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+    try{
+      let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
+      
+      if (reports.length === 0){
+        await createReport(zid);
+        reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+      }
+      
+      var report_id = reports[0].report_id;
+      res.redirect("/report/" + report_id);
     }
-    
-    var report_id = reports[0].report_id;
-    res.redirect("/report/" + report_id);
+    catch (e){
+      console.log(e);
+      fail(res, 500, "polis_err_view_reports", err);
+    }
     return;
   }
   function encodeParams(o) {
@@ -13570,14 +13575,19 @@ CREATE TABLE slack_user_invites (
       let url = "http://" + hostname + ":" + port + path;
       winston.log("info", "fetch file from " + url);
       let x = request(url);
-      req.pipe(x);
-      if (!_.isUndefined(preloadData)) {
-        x = x.pipe(
-          replaceStream(
-            '"REPLACE_THIS_WITH_PRELOAD_DATA"',
-            JSON.stringify(preloadData)
-          )
-        );
+      try{
+        req.pipe(x);
+        if (!_.isUndefined(preloadData)) {
+          x = x.pipe(
+            replaceStream(
+              '"REPLACE_THIS_WITH_PRELOAD_DATA"',
+              JSON.stringify(preloadData)
+            )
+          );
+        }
+      }
+      catch(e) {
+        fail(res, 500, "polis_err_file_fetcher_req_preload");
       }
       // let title = "foo";
       // let description = "bar";
@@ -13596,16 +13606,21 @@ CREATE TABLE slack_user_invites (
           '" />\n';
         // fbMetaTagsString += "    <meta property=\"og:site_name\" content=\"" + site_name + "\" />\n";
       }
-      x = x.pipe(
-        replaceStream(
-          "<!-- REPLACE_THIS_WITH_FB_META_TAGS -->",
-          fbMetaTagsString
-        )
-      );
+      try{
+        x = x.pipe(
+          replaceStream(
+            "<!-- REPLACE_THIS_WITH_FB_META_TAGS -->",
+            fbMetaTagsString
+          )
+        );
 
-      res.set(headers);
+        res.set(headers);
 
-      x.pipe(res);
+        x.pipe(res);
+      }
+      catch (e){
+        fail(res, 500, "polis_err_file_fetcher_req_headers");
+      }
       x.on("error", function (err) {
         fail(res, 500, "polis_err_finding_file " + path, err);
       });
@@ -13869,6 +13884,7 @@ CREATE TABLE slack_user_invites (
           console.error(err.stack);
         }
         res.status(500).end();
+        //fail(res, 500, "polis_err_missing_twitter_image");
       });
   }
   let handle_GET_conditionalIndexFetcher = (function () {

@@ -145,7 +145,7 @@ const sql_user_stats = sql.define({
     "quiz_count",
     "quiz_score",
     "date_created",
-    "date_updated"
+    "date_updated",
   ],
 });
 
@@ -154,7 +154,7 @@ const sql_user_invites = sql.define({
   columns: [
     "uid",
     "uid_invited",
-    "date_accepted"
+    "date_accepted",
   ],
 });
 
@@ -167,7 +167,7 @@ const sql_info_resources = sql.define({
     "link",
     "score",
     "date_created",
-    "date_updated"
+    "date_updated",
   ],
 });
 
@@ -176,7 +176,7 @@ const sql_user_info_resources = sql.define({
   columns: [
     "uid",
     "rid",
-    "date_viewed"
+    "date_viewed",
   ],
 });
 
@@ -186,7 +186,7 @@ const sql_quizzes = sql.define({
     "qid",
     "rid",
     "question",
-    "score"
+    "score",
   ],
 });
 
@@ -196,7 +196,7 @@ const sql_quiz_options = sql.define({
     "qid",
     "opid",
     "option_text",
-    "is_correct"
+    "is_correct",
   ],
 });
 
@@ -207,7 +207,21 @@ const sql_user_quizzes = sql.define({
     "rid",
     "qid",
     "date_attempt",
-    "attempt_count"
+    "attempt_count",
+  ],
+});
+
+const sql_user_favorite_comments = sql.define({
+  name: 'user_favorite_comments',
+  columns: [
+
+  ],
+});
+
+const sql_additional_comment_info = sql.define({
+  name: 'additional_comment_info',
+  columns: [
+
   ],
 });
 
@@ -226,5 +240,7 @@ module.exports = {
   sql_user_info_resources,
   sql_quizzes,
   sql_quiz_options,
-  sql_user_quizzes
+  sql_user_quizzes,
+  sql_user_favorite_comments,
+  sql_additional_comment_info
 };

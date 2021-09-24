@@ -18,6 +18,6 @@ export const getAllInfoResources = (uid) => {
         let rows = await pgQueryP_readOnly(q.toString());
     }
     catch (e) {
-
+        console.log(e);
     }
 }

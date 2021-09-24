@@ -27,9 +27,9 @@ class SignIn extends React.Component {
     console.log(error, errorInfo)
   }
 
-  // getDest() {
-  //   return this.props.location.pathname.slice("/signin".length);
-  // }
+  getDest() {
+    return this.props.location.pathname.slice("/signin".length);
+  }
 
   handleLoginClicked(e) {
     e.preventDefault()

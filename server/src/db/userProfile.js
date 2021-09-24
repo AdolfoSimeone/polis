@@ -12,7 +12,7 @@ const userHasProfile = async (uid) => {
 }
 
 export const getUserProfile = (uid) => {
-
+    
 }
 
 export const saveUserProfile = async (userProfile) => {

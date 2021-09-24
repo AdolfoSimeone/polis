@@ -40,6 +40,7 @@ function getMailOptions(transportType) {
           // TODO: Suppress error thrown by mailgun library when unset.
           api_key: process.env.MAILGUN_API_KEY || "unset-value",
           domain: process.env.MAILGUN_DOMAIN || "unset-value",
+          host: "api.eu.mailgun.net",
         },
       };
       return mg(mailgunAuth);
@@ -52,6 +53,36 @@ function getMailOptions(transportType) {
     default:
       return {};
   }
+}
+
+function getMailgunClient(){
+  const mailgunAuth = {
+    apiKey: process.env.MAILGUN_API_KEY || "unset-value",
+    domain: process.env.MAILGUN_DOMAIN || "unset-value",
+    host: "api.eu.mailgun.net",
+  };
+  const mailgun = require('mailgun-js')(mailgunAuth);
+  return mailgun;
+}
+
+function sendViaMailgun(sender, recipient, subject, text){
+  const mailgun = getMailgunClient();
+  let data = {
+    from: sender,
+    to: recipient,
+    subject,
+    text
+  };
+  return new Promise((resolve, reject) => {
+    mailgun.messages().send(data, (error, body) => {
+      if (error){
+        reject(error);
+      }
+      else{
+        resolve();
+      }
+    });
+  });
 }
 
 function sendTextEmail(
@@ -73,7 +104,14 @@ function sendTextEmail(
   const nextTransportTypes = [...transportTypes];
   const mailOptions = getMailOptions(thisTransportType);
   const transporter = nodemailer.createTransport(mailOptions);
-
+  if (thisTransportType === 'mailgun'){
+    return sendViaMailgun(
+      sender,
+      recipient,
+      subject,
+      text
+    );
+  }
   let promise = transporter
     .sendMail({ from: sender, to: recipient, subject: subject, text: text })
     .catch(function (err) {

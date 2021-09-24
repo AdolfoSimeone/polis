@@ -5,6 +5,8 @@ const Promise = require('bluebird');
 const express = require('express');
 
 const server = require('./src/server');
+// Error handlers
+process.on('uncaughtException', (err) => console.log('node js process error\n', err));
 
 const app = express();
 
@@ -1067,6 +1069,11 @@ helpersInitialized().then((o) =>{
     // proxy everything else
     app.get(/^\/[^(api\/)]?.*/, proxy);
   }
+
+  app.on('clientError', (err, socket) => {
+    if (err.code === 'ECONNRESET' || !socket.writable) socket.end('HTTP/2 400 Bad Request\n');
+    console.log('client error\n', err);
+  });
 
   app.listen(process.env.PORT);
 
