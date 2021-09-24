@@ -48,23 +48,12 @@ module.exports = Handlebones.ModelView.extend({
   context: function() {
     var ctx = Handlebones.ModelView.prototype.context.apply(this, arguments);
     ctx.iOS = iOS;
-    ctx.customStyles = "";
-    // if (ctx.txt && ctx.txt.length < 30) {
-    //   ctx.customStyles += "text-align: center; ";
-    // ctx.customStyles += "padding-top: 39px; ";
-    //   ctx.customStyles += "font-size: 22px; ";
-    // }
     ctx.email = userObject.email;
     ctx.subscribed = this.isSubscribed();
     if (ctx.created) {
       ctx.createdString = (new Date(ctx.created * 1)).toString().match(/(.*?) [0-9]+:/)[1];
     }
     ctx.s = Strings;
-
-    var btnBg = preload.conversation.style_btn;
-    if (btnBg) {
-      ctx.customBtnStyles = "background-color: " + btnBg + ";";
-    }
 
     ctx.auth_opt_tw = preload.firstConv.auth_opt_tw;
     ctx.auth_opt_fb = preload.firstConv.auth_opt_fb;
@@ -157,8 +146,25 @@ module.exports = Handlebones.ModelView.extend({
     if (remaining > 100) {
       remaining = "100+";
     }
+    var myVoteCount = 0;
+    var progress = 0;
+    //If remaining and total come up emptzy    
+    if (!remaining){
+      progress = 100;
+      myVoteCount = ctx.votesByMe.length;
+    }
+    else{
+      myVoteCount = ctx.votesByMe ? ctx.votesByMe.length : ctx.total - remaining;
+      progress = myVoteCount / ctx.total * 100;
+    }
+    if (!ctx.total) {
+      ctx.total = myVoteCount;
+    }
+    ctx.myVoteCount = myVoteCount;
+    ctx.progress = progress;
     ctx.remainingString = Strings.comments_remaining.replace("{{num_comments}}", remaining);
     ctx.remainingStringScreenReader = Strings.comments_remaining2.replace("{{num_comments}}", remaining);
+    console.log(ctx);
     return ctx;
   },
 

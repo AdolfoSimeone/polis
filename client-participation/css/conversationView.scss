@@ -46,26 +46,15 @@ body {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-p {
-  margin: 0 0 10px;
-}
-img {
-  vertical-align: middle;
-}
-img {
-  border: 0;
-}
-.Btn-alt {
-  background-color: #e3e4e5;
-  color: #3498db;
-  letter-spacing: 0.05em;
-}
+
+
+
 .Btn-small {
   padding: 0.4em 1em;
   border-radius: 4px;
   border: 0;
   font-size: 12px;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Noto Sans JP", Arial, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   -webkit-box-shadow: 2px 2px 2px -2px #ACACAC;
@@ -76,8 +65,8 @@ img {
   border-radius: 4px;
   border: 0;
   font-size: 16px;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 700;
+  font-family: "Noto Sans JP", Arial, sans-serif;
+  //font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -88,9 +77,9 @@ img {
 }
 
 .pulseEffect {
-  -webkit-animation-name: pulse;
-  -webkit-animation-duration: 1s;
-  -webkit-animation-iteration-count: infinite;
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
 }
 
 .filledStar {
@@ -133,25 +122,10 @@ img {
 //   stroke-width: 2px;
 // }
 
-// #helpTextBox {
+#helpTextBox {
+  font-family:"Noto Serif JP", Arial, serif;
+}
 
-//   margin-left:auto;
-//   margin-right:auto;
-//   max-width:70%;
-//   min-width: 280px;
-//   text-align: center;
-//   background-color: rgb(235, 235, 235);
-//   /*position: relative;*/
-//   /*top: -5px;*/
-//   border-radius: 3px;
-//   border-style: solid;
-//   font-size: 18px;
-//   /* color: white; */
-//   /* text-align: center; */
-//   padding: 10px;
-//   border-width: 1px;
-//   border-color: #333;
-// }
 
 .affix {
   position: fixed;
@@ -173,7 +147,7 @@ img {
   border-bottom: 1px solid lightgray;
 }
 
-#agreeButton, #disagreeButton {
+/* #agreeButton, #disagreeButton {
   border-right: 0px
 }
 
@@ -188,21 +162,21 @@ img {
 
 #agreeButton, #disagreeButton, #passButton {
   border-bottom: 0;
-  // background: #fafafa;
-  -webkit-font-smoothing: antialiased;
+  background: #fafafa;
+  -webkit-font-smoothing: antialiased; */
 
   // prevent clipped right edge and extra padding on left edge on mobile
-  padding-left: 0px;
-  padding-right: 0px;
+  //padding-left: 0px;
+  //padding-right: 0px;
 
   // Only allow hovering when not on iOS ( see https://github.com/twbs/bootstrap/issues/12832 )
-  &.vote-btn-w-hover {
+/*  &.vote-btn-w-hover {
     &:hover {
       border-color: #bbb;
       background: #eee;
     }
   }
-}
+}*/
 
 .groupButton {
     color: rgb(0,0,0);
@@ -309,7 +283,7 @@ img {
   background-color: rgba(0,0,0,0);
   text-decoration: none;
   font-size: 14px;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Noto Sans JP", Arial, sans-serif;
   text-rendering: optimizeLegibility;
 }
 .reactionButton:hover{
@@ -492,12 +466,12 @@ svg {
   color: #0a77bf;
 }
 
-#comment_shower p, #comment_shower h3 {
-   font-weight: normal;
-   line-height: normal;
+//#statement_shower p, #statement_shower h3 {
+   //font-weight: normal;
+  // line-height: normal;
    // background-color: $panel-color;
    // border-radius: 10px;
-}
+//}
 
 /* Comment Input Form */
 
@@ -658,39 +632,20 @@ svg {
   // // background-color: white;
 }
 
-  .fa-twitter {
-    color: #55ACEE;
-  }
+.fa-twitter {
+  color: #55ACEE;
+}
 
-  .fa-facebook {
-    color: #3b5998;
-  }
+.fa-facebook {
+  color: #3b5998;
+}
 
-.facebookButton, .twitterButton {
-  cursor: pointer;
-  border: 0px;
+
+i {
+  font-size: 24px;
   color: white;
-  font-family: $sans-font;
-  font-weight: 300;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 14px;
-
-  i {
-    font-size: 24px;
-    color: white;
-    position: relative;
-    top: 4px;
-  }
-}
-
-.twitterButton {
-  background-color: #55ACEE;
-}
-
-.facebookButton {
-  margin-right: 10px;
-  background-color: #3b5998;
+  position: relative;
+  top: 4px;
 }
 
 .facebookCaveatText {
@@ -881,7 +836,7 @@ svg {
 /* BIG PHONE to LITTLE tablet */
 @media only screen and (min-width : 768px) and (max-width : 1024px) {
 
-  #comment_shower {
+  #statement_shower {
     //margin-top: 20px;
   }
   .dropdown-menu {
@@ -892,7 +847,7 @@ svg {
 
 /* LITTLE TABLET and down */
 @media only screen and (min-width : 320px) and (max-width : 1024px) {
-  #comment_shower_frame {
+  #statement_shower_frame {
     padding: 5px;
   }
 
@@ -908,14 +863,6 @@ svg {
     margin: 0px;
   }
 
-  .voteMoreText {
-    // the vote more screen looks funny at the bottom of the page. There's nothing else to do but vote, so people should just get it.
-    // display: none;
-  }
-
-  #comment_shower {
-    // margin-top: 20px;
-  }
   .nav-tabs > li > a {
     padding-left: 12px !important;
     padding-right: 12px !important;
@@ -928,10 +875,6 @@ svg {
     display: none;
   }
 
-
-  .polis-tab {
-    // font-size:10px; // not needed since we're hiding the analyze tab, which makes space for the other tabs
-  }
   #vis_sibling_bottom {
     margin-left: auto;
   }

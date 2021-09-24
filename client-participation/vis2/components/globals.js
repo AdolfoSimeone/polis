@@ -1,8 +1,8 @@
 
 export const minParticipantsForVis = 7;
 
-export const sans = "Montserrat, ";
-export const serif = "Source Serif Pro, Georgia";
+export const sans = "Rubik, sans-serif";
+export const serif = "Rubik";
 export const paragraphWidth = 475;
 export const paragraphLineHeight = "24px";
 export const barChartWidth = 250;
@@ -91,7 +91,7 @@ export const getGroupNamePosition = (gid) => {
 
 export const colors = {
   agree: "rgb(46, 204, 113)",
-  disagree: "rgb(231, 76, 60)",
+  disagree: "#F06A6A",
   pass: "rgb(230,230,230)",
   comment: "#03a9f4",
 };

@@ -116,9 +116,9 @@ VisView = function(params) {
   var strokeWidthGivenVisWidth = d3_old.scale.linear().range([0.2, 1.0]).domain([350, 800]).clamp(true);
   var hullStrokeWidthGivenVisWidth = d3_old.scale.linear().range([4, 12]).domain([350, 800]).clamp(true);
 
-  var grayHaloColor = "darkgrey";
+  var grayHaloColor = "#7e8899";
   var grayHaloColorSelected = grayHaloColor; // "rgba(0,0,0,0)";
-  var colorPull = "#2ecc71";
+  var colorPull = "#58CA93";
   var colorPullLabel = "rgb(0, 181, 77)";
   var colorPush = "#e74c3c"; // ALIZARIN
   var colorSummaryBlob = "#F9F9F9";
@@ -371,7 +371,8 @@ VisView = function(params) {
         .classed("active_group", true);
       d3_old.select(d3HullSelections[i][0][0])
         .classed("active_group", true)
-        .style("visibility", "visible");
+        .classList.remove("hidden")
+        .classList.add("visible");
     }
   }
 
@@ -518,34 +519,14 @@ VisView = function(params) {
     }
 
     function hideHull(i) {
-      d3Hulls[i].datum([]).style("visibility", "hidden");
-      d3HullSelections[i].datum([]).style("visibility", "hidden");
-      // d3HullShadows[i].datum([]).style("visibility", "hidden");
+      d3Hulls[i].datum([]).classList.add("hidden");
+      d3HullSelections[i].datum([]).classList.add("hidden");
     }
 
     function updateHull(i) {
       var dfd = new $.Deferred();
       setTimeout(function() {
         var hull = hulls[i];
-
-        // var pointsToFeedToD3 = hull.map(function(pt) { return pt;});
-
-        // if (pointsToFeedTod3_old.length == 1) {
-        //     pointsToFeedTod3_old.push([
-        //         pointsToFeedToD3[0][0] + 0.01,
-        //         pointsToFeedToD3[0][1] + 0.01
-        //         ]);
-        // }
-        // if (pointsToFeedTod3_old.length == 2) {
-        //     pointsToFeedTod3_old.push([
-        //         pointsToFeedToD3[0][0] + 0.01,
-        //         pointsToFeedToD3[0][1] - 0.01 // NOTE subtracting so they're not inline
-        //         ]);
-        // }
-
-
-
-        // var hullPoints_WillBeMutated = d3_old.geom.hull(pointsToFeedToD3);
 
         if (!hull) {
           // TODO figure out what's up here
@@ -621,23 +602,27 @@ VisView = function(params) {
 
             d3HullSelections[i].datum(points)
               .attr("d", shape)
-              .style("visibility", "visible");
+              .classList.remove("hidden")
+              .classList.add("visible");
           } else {
             d3HullSelections[i].datum(points)
               .attr("d", shape)
-              .style("visibility", "hidden");
+              .classList.remove("hidden")
+              .classList.add("visible");
           }
 
           d3Hulls[i].datum(points)
             .attr("d", shape)
+            .classList.remove("hidden")
+            .classList.add("visible")
             // .style("fill-opacity", 1)
             // .style("fill", "white")
             .style("stroke", "rgb(130,130,130)")
             // .style("stroke-opacity", hullOpacity)
             .style("stroke-width", 1)
-            .style("stroke-dasharray", "2px 4px")
-            .style("visibility", "visible");
-
+            .style("stroke-dasharray", "2px 4px");
+            
+            //TODO monito
 
           // d3HullShadows[i].datum(points)
           //     .attr("d", shape)
@@ -1325,9 +1310,11 @@ VisView = function(params) {
 
 
     main_layer.selectAll(".node")
-      .attr("visibility", function(d) {
+      .attr("class", function(d) {
         return (d.count >= 1) ? "visbile" : "hidden";
       });
+
+// TODO monito quiere poner .attr("class", "visible" : "hidden")
 
     var update = main_layer.selectAll(".ptpt")
       .data(nodes, key)
@@ -1429,7 +1416,6 @@ VisView = function(params) {
         return getImageWidth(d) * -0.5;
       })
       .attr("filter", "")
-      // .style("visibility", "hidden")
       .attr("height", getImageWidth)
       .attr("width", getImageWidth)
       .attr("clip-path", "url(#clipCircle)")
@@ -1754,9 +1740,11 @@ VisView = function(params) {
       .style("display", chooseDisplayForGrayHalo);
 
     if (clusterIsSelected()) {
-      update.selectAll(".hideWhenGroupSelected").style("visibility", "hidden");
+      update.selectAll(".hideWhenGroupSelected")
+      .style("visibility", "hidden");
     } else {
-      update.selectAll(".hideWhenGroupSelected").style("visibility", "visible");
+      update.selectAll(".hideWhenGroupSelected")
+      .style("visibility", "visible");
     }
 
     update.selectAll(".grayHalo")

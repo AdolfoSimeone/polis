@@ -539,7 +539,7 @@ String.prototype.hashCode = function () {
 const fail = Log.fail;
 const userFail = Log.userFail;
 
-function initializePolisHelpers() {
+async function initializePolisHelpers() {
   // // If there are any comments which have no votes by the owner, create a PASS vote by the owner.
   // pgQuery("select * from comments", [], function(err, comments) {
   //     pgQuery("select * from votes", [], function(err, votes) {
@@ -9410,7 +9410,21 @@ Email verified! You can close this tab or hit the back button.
         }
       });
   }
-
+  async function handle_GET_conversationReport(req, res) {
+    console.log("Params: " + req.p.zid);
+    let zid = req.p.zid;
+    //TODO Check if user is moderator
+    let reports = await pgQueryP("select * from reports where zid = ($1);", [zid])
+    
+    if (reports.length === 0){
+      await createReport(zid);
+      reports = await pgQueryP("select * from reports where zid = ($1);", [zid]);
+    }
+    
+    var report_id = reports[0].report_id;
+    res.redirect("/report/" + report_id);
+    return;
+  }
   function encodeParams(o) {
     let stringifiedJson = JSON.stringify(o);
     let encoded = "ep1_" + strToHex(stringifiedJson);
@@ -14123,6 +14137,7 @@ CREATE TABLE slack_user_invites (
     handle_PUT_reports,
     handle_PUT_users,
 
+    handle_GET_conversationReport,
     // Debugging
     //getNextPrioritizedComment,
     //getPca

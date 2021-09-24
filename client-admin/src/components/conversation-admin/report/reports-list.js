@@ -19,34 +19,49 @@ class ReportsList extends React.Component {
     }
   }
 
-  getData() {
+  async getData() {
     const { match } = this.props
     const reportsPromise = PolisNet.polisGet('/api/v3/reports', {
       conversation_id: match.params.conversation_id
     })
-    reportsPromise.then((reports) => {
-      this.setState({
-        loading: false,
-        reports: reports
-      })
+
+    let reports = await reportsPromise;
+    
+    if (reports.length > 1){
+      reports = reports.slice(reports.length - 1);
+    }
+    
+    this.setState({
+      loading: false,
+      reports: reports
     })
+
+    return;
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { zid_metadata } = this.props
 
+    /*
     if (zid_metadata.is_mod) {
       this.getData()
     }
+    */
+
+    await this.getData();
+    if (this.state.reports.length === 0){
+      await this.createReportClicked();
+    }
+
   }
 
-  createReportClicked() {
-    const { match } = this.props
-    PolisNet.polisPost('/api/v3/reports', {
+  async createReportClicked() {
+    const { match } = this.props;  
+    await PolisNet.polisPost('/api/v3/reports', {
       conversation_id: match.params.conversation_id
-    }).then(() => {
-      this.getData()
-    })
+    });
+    await this.getData();
+    return;
   }
 
   render() {
@@ -68,12 +83,14 @@ class ReportsList extends React.Component {
           }}>
           Report
         </Heading>
+        {/* 
         <Box sx={{ mb: [3, null, 4] }}>
           <Button onClick={this.createReportClicked.bind(this)}>
             Create report url
           </Button>
         </Box>
-        {this.state.reports.map((report) => {
+        */}
+        {this.state.reports.map(report => {
           return (
             <Box sx={{ mb: [2] }} key={report.report_id}>
               <a

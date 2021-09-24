@@ -10,7 +10,7 @@ class Hull extends React.Component {
           onClick={() => {this.props.handleClick(this.props.gid)}}
           d={this.props.pathString}
           ref={this.props.getHullElems(this.props.gid)}
-          fill={/*globals.groupColor(hull.group[0].gid)*/ this.props.selectedGroup === this.props.gid ? "rgb(180,180,180)" : "rgb(220,220,220)"}
+          fill={/*globals.groupColor(hull.group[0].gid)*/ this.props.selectedGroup === this.props.gid ? "rgb(116,124,154)" : "rgb(156, 169, 191)"}
           fillOpacity={.6}/>
       </g>
     );

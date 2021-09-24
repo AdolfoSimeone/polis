@@ -32,11 +32,6 @@ class Graph extends React.Component {
     window.addEventListener("resize", () => {
       this.setState({browserDimensions: window.innerWidth})
     })
-
-    // document.getElementById("helpTextGroups").style.display = "none";
-    // document.getElementById("visualization_div").style.display = "none";
-    // document.getElementById("carouselPane").style.display = "none";
-    // document.getElementById("groupSelectionViewContainer").style.display = "none";
   }
 
   componentWillReceiveProps(nextProps, nextState) {
@@ -156,7 +151,7 @@ class Graph extends React.Component {
         <svg width={globals.sideWithPadding} height={globals.svgHeightWithPadding} style={{
           transform: "scale("+svgScale+")",
           transformOrigin: "0% 0%",
-          marginBottom: svgNegativeMargin}
+          margin: "auto"}
         }>
           <filter id="grayscale">
              <feColorMatrix type="saturate" values="0"/>
@@ -166,8 +161,8 @@ class Graph extends React.Component {
             <g transform={`translate(${globals.side / 2}, ${15})`}>
               <text
                 style={{
-                  fontFamily: "Georgia",
-                  fontSize: 14,
+                  fontFamily: "Rubik",
+                  fontSize: 16,
                   fontStyle: "italic"
                 }}
                 textAnchor="middle">

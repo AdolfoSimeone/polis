@@ -7,6 +7,10 @@ module.exports = {
     // sample configuration for main pol.is deployment
     "^pol\\.is",
     ".+\\.pol\\.is$",
+    "^xip\\.io$",
+    ".+\\.xip\\.io$",
+    "^polis.spiralroads.de$",
+
     // These allow for local ip routing for remote dev deployment
     "^(n|ssl)ip\\.io$",
     ".+\\.(n|ssl)ip\\.io$",

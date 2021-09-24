@@ -18,7 +18,7 @@ class Button extends React.Component {
         cursor: "pointer",
         padding: "6px 12px",
         fontWeight: (!_.isNull(this.props.selectedTidCuration) && this.props.selectedTidCuration === this.props.identifier) ? 700 : 500,
-        backgroundColor: (!_.isNull(this.props.selectedTidCuration) && this.props.selectedTidCuration === this.props.identifier) ? "#03a9f4" : "rgb(235,235,235)",
+        backgroundColor: (!_.isNull(this.props.selectedTidCuration) && this.props.selectedTidCuration === this.props.identifier) ? "#03a9f4" : "rgba(255,255,255, 0.7)",
         color: (!_.isNull(this.props.selectedTidCuration) && this.props.selectedTidCuration === this.props.identifier) ? "rgb(255,255,255)" : "rgb(100,100,100)",
         borderRadius: 4,
       }}
@@ -64,8 +64,8 @@ class Curate extends React.Component {
         }}>
           <p style={{
               marginRight: 10,
-              fontSize: 14,
-              fontFamily: "Georgia",
+              fontSize: 16,
+              fontFamily: "Rubik",
               fontStyle: "italic"
             }}>
             {this.props.Strings.group_123}

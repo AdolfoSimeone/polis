@@ -111,7 +111,7 @@ module.exports = Handlebones.ModelView.extend({
     }
   },
   textChange: function() {
-
+    this.$("#success_checkmark_icon").hide();
     this.hideMessage("#comment_sent_message");
     this.hideMessage("#comment_send_failed_message");
     this.hideMessage("#comment_send_failed_empty_message");
@@ -133,7 +133,7 @@ module.exports = Handlebones.ModelView.extend({
       this.showMessage("#commentTooLongAlert");
       // this.buttonActive = false;
       this.$("#commentCharCount").text("");
-      this.$("#commentCharCount").hide();
+      //this.$("#commentCharCount").classList.add("hidden");
       this.$("#commentCharCountExceeded").text(txt.replace("{{CHARACTERS_COUNT}}", num));
       this.$("#commentCharCountExceeded").show();
     } else {
@@ -149,7 +149,7 @@ module.exports = Handlebones.ModelView.extend({
       this.$("#commentCharCount").text(txt.replace("{{CHARACTERS_COUNT}}", num));
       this.$("#commentCharCount").show();
       this.$("#commentCharCountExceeded").text("");
-      this.$("#commentCharCountExceeded").hide();
+      this.$("#commentCharCount").classList.remove("hidden");
     }
 
     this.chooseBasicTip(formText);
@@ -197,6 +197,7 @@ module.exports = Handlebones.ModelView.extend({
   },
   submitComment: function(e){
     var that = this;
+    this.$("#success_checkmark_icon").hide();
     this.hideMessage("#comment_sent_message");
     this.hideMessage("#comment_send_failed_message");
     this.hideMessage("#comment_send_failed_empty_message");
@@ -223,6 +224,8 @@ module.exports = Handlebones.ModelView.extend({
             that.$("#comment_form_textarea").val("");
             that.hideFormControls();
             that.showMessage("#comment_sent_message");
+            that.$("#commentCharCount").hide();
+            that.$("#success_checkmark_icon").show();
 
           }, function(err) {
             // that.showMessage("#comment_send_failed_message");
@@ -236,6 +239,9 @@ module.exports = Handlebones.ModelView.extend({
     var hasSocial = window.userObject.hasFacebook || window.userObject.hasTwitter || !_.isUndefined(xid);
     var needsSocial = preload.firstConv.auth_needed_to_write;
     M.add(M.COMMENT_SUBMIT_CLICK);
+    console.log("submit comment");
+    console.log(hasSocial);
+    console.log(needsSocial);
     if (hasSocial || !needsSocial) {
       M.add(M.COMMENT_SUBMIT_INIT);
       doSubmitComment();
@@ -309,6 +315,8 @@ module.exports = Handlebones.ModelView.extend({
     attrs.txt = attrs.txt.replace(/\n/g, " ");
 
     if (Utils.isDemoMode()) {
+      that.$("#commentCharCount").hide();
+      that.$("#success_checkmark_icon").show();
       that.showMessage("#comment_sent_message");
       that.trigger("commentSubmitted");
       return resolve();

@@ -661,6 +661,8 @@ const fetchConversations = () => {
   return $.get('/api/v3/conversations?include_all_conversations_i_am_in=true')
 }
 
+//TODO add search conversations, get random recent ones too
+
 export const populateConversationsStore = () => {
   return (dispatch) => {
     dispatch(requestConversations())

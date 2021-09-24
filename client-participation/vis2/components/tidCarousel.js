@@ -57,15 +57,15 @@ class TidCarousel extends React.Component {
         <PaginateButton paginate={this.movePage(-10)} leftSide>
           <g transform="translate(-13.000000, -5.000000)">
             <g transform="translate(13.000000, 5.000000)">
-              <polyline fill="rgb(180,180,180)" points="4.50549451 5 9.50549451 10 9.50549451 6.123234e-16"></polyline>
-              <polyline fill="rgb(180,180,180)" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="4.50549451 5 9.50549451 10 9.50549451 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
             </g>
           </g>
         </PaginateButton>
         <PaginateButton paginate={this.movePage(-1)} leftSide>
           <g  transform="translate(-13.000000, -5.000000)">
             <g transform="translate(13.000000, 5.000000)">
-              <polyline fill="rgb(180,180,180)" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
             </g>
           </g>
         </PaginateButton>
@@ -79,15 +79,15 @@ class TidCarousel extends React.Component {
         <PaginateButton paginate={this.movePage(1)}>
           <g transform="translate(-13.000000, -5.000000)">
             <g transform="translate(18.000000, 10.000000) scale(-1, 1) translate(-18.000000, -10.000000) translate(13.000000, 5.000000)">
-              <polyline fill="rgb(180,180,180)" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
             </g>
           </g>
         </PaginateButton>
         <PaginateButton paginate={this.movePage(10)}>
           <g transform="translate(-13.000000, -5.000000)">
             <g transform="translate(18.000000, 10.000000) scale(-1, 1) translate(-18.000000, -10.000000) translate(13.000000, 5.000000)">
-              <polyline fill="rgb(180,180,180)" points="4.50549451 5 9.50549451 10 9.50549451 6.123234e-16"></polyline>
-              <polyline fill="rgb(180,180,180)" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="4.50549451 5 9.50549451 10 9.50549451 6.123234e-16"></polyline>
+              <polyline fill="#9CA9BF" points="-3.061617e-16 5 5 10 5 6.123234e-16"></polyline>
             </g>
           </g>
         </PaginateButton>
@@ -119,7 +119,7 @@ class TidCarousel extends React.Component {
           <p style={{
               marginRight: 10,
               fontSize: 14,
-              fontFamily: "Georgia",
+              fontFamily: "Rubik",
               fontStyle: "italic"
             }}>
             {this.props.Strings.comment_123}
@@ -140,7 +140,7 @@ class TidCarousel extends React.Component {
                     border: (this.props.selectedComment && this.props.selectedComment.tid === c.tid) ? "1px solid rgb(80, 80, 80)" :  "none",
                     padding: "6px 1px",
                     fontWeight: (this.props.selectedComment && this.props.selectedComment.tid === c.tid) ? 700 : 300,
-                    backgroundColor: "rgb(235,235,235)",
+                    backgroundColor: "rgba(255,255,255, 0.7)",
                     color: "rgb(0,0,0)",
                     borderRadius: 4,
                   }}
