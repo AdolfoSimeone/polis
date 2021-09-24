@@ -9,7 +9,7 @@ import { Heading, Box, Button } from 'theme-ui'
 import ComponentHelpers from '../../../util/component-helpers'
 import NoPermission from '../no-permission'
 
-@connect(state => state.zid_metadata)
+@connect((state) => state.zid_metadata)
 class ReportsList extends React.Component {
   constructor(props) {
     super(props)
@@ -24,6 +24,7 @@ class ReportsList extends React.Component {
     const reportsPromise = PolisNet.polisGet('/api/v3/reports', {
       conversation_id: match.params.conversation_id
     })
+
     let reports = await reportsPromise;
     
     if (reports.length > 1){
