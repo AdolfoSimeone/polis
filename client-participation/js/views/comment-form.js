@@ -149,7 +149,6 @@ module.exports = Handlebones.ModelView.extend({
       this.$("#commentCharCount").text(txt.replace("{{CHARACTERS_COUNT}}", num));
       this.$("#commentCharCount").show();
       this.$("#commentCharCountExceeded").text("");
-      this.$("#commentCharCount").classList.remove("hidden");
     }
 
     this.chooseBasicTip(formText);
