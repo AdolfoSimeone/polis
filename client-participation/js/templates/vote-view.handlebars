@@ -57,7 +57,7 @@
           <button id="subscribeBtn" class="Btn blueBtn unselectable" 
             >{{s.notificationsSubscribeButton}}</button>
         </div>
-        <p>Este proyecto está en fasé alpha. Por favor, ayudanos mejorar respondiendo unas preguntas sobre tu experiencia. Tu opinión es muy importante para nosotros! Gracias! <3</p>
+        <p>Este proyecto está en fase alfa. Por favor, ayudanos a mejorar respondiendo unas preguntas sobre tu experiencia. ¡Tu opinión es muy importante para nosotros, gracias! &lt;3</p>
       <div class="Btn blueBtn"><a href="https://forms.gle/BijKSZeUjwvuV7iE9">Questionario</a></div>
       </form>
     {{else}} {{!-- !canSubscribe --}}
@@ -184,6 +184,7 @@
       <button
         id="agreeButton"
         class="reactionButton"
+        disabled="{{disableReaction}}"
         >
         <i class="svgIcon" 
           >{{> iconFaCircleCheck}}</i>
@@ -192,6 +193,7 @@
       <button
         id="disagreeButton"
         class="reactionButton"
+        disabled="{{disableReaction}}"
         >
         <i class="svgIcon">{{> iconFaBan}}</i>
         {{s.disagree}}
@@ -199,6 +201,7 @@
       <button
         id="passButton"
         class="reactionButton"
+        disabled="{{disableReaction}}"
         >
         {{s.pass}}
       </button>

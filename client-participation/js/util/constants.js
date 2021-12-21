@@ -17,5 +17,6 @@ module.exports = {
     BAN: -1,
     UNMODERATED: 0,
     OK: 1
-  }
+  },
+  REACTION_DELAY: 10000,
 };

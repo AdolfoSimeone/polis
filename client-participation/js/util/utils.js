@@ -382,6 +382,11 @@ function getGroupAware() {
   return params.groupAware;
 }
 
+function sleep(delay) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, delay);
+  });
+}
 
 // Return the {x: {min: #, max: #}, y: {min: #, max: #}}
 module.exports = {
@@ -502,5 +507,6 @@ module.exports = {
   encodeParams: encodeParams,
   numberOfDaysInTrial: numberOfDaysInTrial,
   trialDaysRemaining: trialDaysRemaining,
-  cookiesEnabled: are_cookies_enabled
+  cookiesEnabled: are_cookies_enabled,
+  sleep: sleep,
 };

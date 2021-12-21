@@ -9,6 +9,7 @@ var preloadHelper = require("../util/preloadHelper");
 var template = require("../tmpl/vote-view");
 var Utils = require("../util/utils");
 var Strings = require("../strings");
+//var Constants = require("../util/constants");
 
 var iOS = Utils.isIos();
 
@@ -164,6 +165,7 @@ module.exports = Handlebones.ModelView.extend({
     ctx.progress = progress;
     ctx.remainingString = Strings.comments_remaining.replace("{{num_comments}}", remaining);
     ctx.remainingStringScreenReader = Strings.comments_remaining2.replace("{{num_comments}}", remaining);
+    ctx.disableReaction = false; //This will force the user to wait before voting
     console.log(ctx);
     return ctx;
   },
@@ -261,6 +263,14 @@ module.exports = Handlebones.ModelView.extend({
   showMod: function() {
     this.model.set("shouldMod", true);
   },
+  /*
+  waitToReaction: function() {
+    var that = this;
+    Utils.sleep(Constants.REACTION_DELAY).then(() => {
+      that.model.set("disableReaction", false);
+    });
+  },
+  */
   initialize: function(options) {
     Handlebones.ModelView.prototype.initialize.apply(this, arguments);
     eb.on(eb.exitConv, cleanup);
