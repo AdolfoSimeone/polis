@@ -9,15 +9,18 @@ const sql_info_resources = SQL.sql_info_resources;
 const sql_user_info_resources = SQL.sql_user_info_resources;
 
 //get all available info resources, also indicate whether the user has viewed them or not
-export const getAllInfoResources = (uid) => {
+export const getAllInfoResources = async (uid) => {
     let q = sql_info_resources
         .select(sql_info_resources.star())
         .from(sql_info_resources.leftJoin(sql_user_info_resources).on(sql_user_info_resources.rid.equals(sql_info_resources.rid)));
        
     try{
         let rows = await pgQueryP_readOnly(q.toString());
+        return rows;
     }
     catch (e) {
+        //TODO throw again?
         console.log(e);
+        return [];
     }
 }

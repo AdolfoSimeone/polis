@@ -263,14 +263,12 @@ module.exports = Handlebones.ModelView.extend({
   showMod: function() {
     this.model.set("shouldMod", true);
   },
-  /*
   waitToReaction: function() {
     var that = this;
-    Utils.sleep(Constants.REACTION_DELAY).then(() => {
+    Utils.sleep(Constants.REACTION_DELAY).then(function() {
       that.model.set("disableReaction", false);
     });
   },
-  */
   initialize: function(options) {
     Handlebones.ModelView.prototype.initialize.apply(this, arguments);
     eb.on(eb.exitConv, cleanup);

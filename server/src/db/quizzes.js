@@ -1,9 +1,6 @@
 const pg = require("./pg-query");
 const pgQueryP = pg.queryP;
-const pgQueryP_metered = pg.queryP_metered;
-const pgQueryP_metered_readOnly = pg.queryP_metered_readOnly;
 const pgQueryP_readOnly = pg.queryP_readOnly;
-const pgQueryP_readOnly_wRetryIfEmpty = pg.queryP_readOnly_wRetryIfEmpty;
 const SQL = require("./sql");
 const sql_quizzes = SQL.sql_quizzes;
 const sql_quiz_options = SQL.sql_quiz_options;
@@ -16,11 +13,13 @@ export const getQuizForResource = async (rid) => {
         .where(sql_quizzes.rid.equals(rid));
     try {
         let rows = await pgQueryP_readOnly(q.toString());
+        return rows;
     }
     catch (e){
-
+        //TODO throw again?
+        console.log(e);
+        return [];
     }
-    
 }
 
 //get options for a given quiz
@@ -30,9 +29,12 @@ export const getQuizOptions = async (qid) => {
         .where(sql_quiz_options.qid.equals(qid));
     try{
         let rows = await pgQueryP_readOnly(q.toString());
+        return rows;
     }
     catch (e){
-
+        //TODO throw again?
+        console.log(e);
+        return [];
     }
 }
 
@@ -42,10 +44,13 @@ export const validateQuizSelectedOption = (qid, opid) => {
         .select(sql_quiz_options.is_correct)
         .where(sql_quiz_options.qid.equals(qid).and(sql_quiz_options.opid.equals(opid)));
     try {
-        let result = await pgQueryP_readOnly(q.toString());
+        let rows = await pgQueryP_readOnly(q.toString());
+        return rows;
     }
     catch (e){
-
+        //TODO throw again?
+        console.log(e);
+        return [];
     }
     
 }

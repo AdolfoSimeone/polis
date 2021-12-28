@@ -133,7 +133,7 @@ const sql_reports = sql.define({
   ],
 });
 
-//New tables here
+// -- NEW TABLES SQL DEFINITIONS
 const sql_user_stats = sql.define({
   name: 'user_stats',
   columns: [
@@ -225,6 +225,64 @@ const sql_additional_comment_info = sql.define({
   ],
 });
 
+const sql_categories = sql.define({
+  name: 'categories',
+  columns: [
+    'catid',
+    'name',
+    'description'
+  ],
+});
+
+const sql_community_goals = sql.define({
+  name: 'community_goals',
+  columns: [
+    'id',
+    'name',
+    'description',
+    'required_score',
+    'accumulated_score'
+  ],
+});
+
+const sql_user_goals = sql.define({
+  name: 'user_goals',
+  columns: [
+    'uid',
+    'gid',
+    'score'
+  ],
+});
+
+const sql_actions = sql.define({
+  name: 'actions',
+  columns: [
+    'key',
+    'name',
+    'description',
+    'score',
+  ]
+});
+
+const sql_user_actions = sql.define({
+  name: 'user_actions',
+  columns: [
+    'key',
+    'uid',
+    'count',
+  ]
+});
+
+const sql_badges = sql.define({
+  name: 'badges',
+  columns: [],
+});
+
+const sql_user_badges = sql.define({
+  name: 'user_badges',
+  columns: [],
+});
+
 module.exports = {
   sql_conversations,
   sql_comments,
@@ -233,14 +291,30 @@ module.exports = {
   sql_participants_extended,
   sql_reports,
   sql_users,
-  //New tables
+  // -- START NEW TABLES
+  // User profile & stats
   sql_user_stats,
   sql_user_invites,
+  // Info resources
   sql_info_resources,
   sql_user_info_resources,
+  // Quizzes and options
   sql_quizzes,
   sql_quiz_options,
   sql_user_quizzes,
+  // Favorites
   sql_user_favorite_comments,
-  sql_additional_comment_info
+  sql_additional_comment_info,
+  // Community goals
+  sql_community_goals,
+  sql_user_goals,
+  // Categories
+  sql_categories,
+  // Actions
+  sql_actions,
+  sql_user_actions,
+  // Badges
+  sql_badges,
+  sql_user_badges,
+  // -- END NEW TABLES
 };

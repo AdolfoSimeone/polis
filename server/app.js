@@ -1017,6 +1017,10 @@ helpersInitialized().then((o) =>{
   // Duplicate url for content at root. Needed so we have something for "About" to link to.
   app.get(/^\/about$/, makeRedirectorTo("/home"));
   app.get(/^\/home(\/.*)?/, fetchIndexForAdminPage);
+  //ADDED PAGES
+  app.get(/^\/profile$/, fetchIndexForAdminPage);
+  app.get(/^\/stats$/, fetchIndexForAdminPage);
+  // ----------
   app.get(/^\/s\/CTE\/?$/, makeFileFetcher(hostname, portForParticipationFiles, "/football.html", {
     'Content-Type': "text/html",
   }));
