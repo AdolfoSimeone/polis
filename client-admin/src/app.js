@@ -228,7 +228,6 @@ class App extends React.Component {
           <Route exact path="/profile" component={ProfileStats}></Route>
           <Route exact path="/stats" component={Profile}></Route>
 
-          <Route exact path="/dummy" component={DummyPage} />
           <InteriorHeader>
             <Route
               render={(routeProps) => {
