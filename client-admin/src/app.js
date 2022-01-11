@@ -31,6 +31,13 @@ import Integrate from './components/conversations-and-account/integrate'
 
 import InteriorHeader from './components/interior-header'
 
+//ADDED PAGES
+//profile
+import Profile from './components/profile/profile';
+import ProfileStats from './components/profile/stats';
+import DummyPage from './components/dummy/dummyPage'
+
+
 const PrivateRoute = ({ component: Component, isLoading, authed, ...rest }) => {
   if (isLoading) {
     return null
@@ -218,7 +225,10 @@ class App extends React.Component {
           />
           <Route exact path="/tos" component={TOS} />
           <Route exact path="/privacy" component={Privacy} />
+          <Route exact path="/profile" component={ProfileStats}></Route>
+          <Route exact path="/stats" component={Profile}></Route>
 
+          <Route exact path="/dummy" component={DummyPage} />
           <InteriorHeader>
             <Route
               render={(routeProps) => {
