@@ -33,9 +33,10 @@ import InteriorHeader from './components/interior-header'
 
 //ADDED PAGES
 //profile
-import Profile from './components/profile/profile';
-import ProfileStats from './components/profile/stats';
-import DummyPage from './components/dummy/dummyPage'
+import ProfileQuests from './components/profile/pages/profile';
+import ProfileStats from './components/profile/pages/stats';
+import ProfileSettings from './components/profile/pages/settings';
+import ProfileMain from './components/profile/pages/profile';
 
 
 const PrivateRoute = ({ component: Component, isLoading, authed, ...rest }) => {
@@ -226,7 +227,9 @@ class App extends React.Component {
           <Route exact path="/tos" component={TOS} />
           <Route exact path="/privacy" component={Privacy} />
           <Route exact path="/profile" component={ProfileStats}></Route>
-          <Route exact path="/stats" component={Profile}></Route>
+          <Route exact path="/stats" component={ProfileMain}></Route>
+          <Route exact path="/quests" component={ProfileQuests}></Route>
+          <Route exact path="/settings" component={ProfileSettings}></Route>
 
           <InteriorHeader>
             <Route
