@@ -8,7 +8,7 @@ import { populateUserStore } from './actions'
 
 import _ from 'lodash'
 
-import { Switch, Route, Link, Redirect } from 'react-router-dom'
+import { Routes, Route, Link, Navigate } from 'react-router-dom'
 import { Flex, Box, jsx } from 'theme-ui'
 
 /* landers */
@@ -39,7 +39,7 @@ import ProfileSettings from './components/profile/pages/settings';
 import ProfileMain from './components/profile/pages/profile';
 
 
-const PrivateRoute = ({ component: Component, isLoading, authed, ...rest }) => {
+const PrivateRoute = ({ element: Component, isLoading, authed, ...rest }) => {
   if (isLoading) {
     return null
   }
@@ -50,7 +50,7 @@ const PrivateRoute = ({ component: Component, isLoading, authed, ...rest }) => {
         authed === true ? (
           <Component {...props} />
         ) : (
-          <Redirect
+          <Navigate
             to={{ pathname: '/signin', state: { from: props.location } }}
           />
         )
@@ -60,7 +60,7 @@ const PrivateRoute = ({ component: Component, isLoading, authed, ...rest }) => {
 }
 
 PrivateRoute.propTypes = {
-  component: PropTypes.element,
+  element: PropTypes.element,
   isLoading: PropTypes.bool,
   location: PropTypes.object,
   authed: PropTypes.bool
@@ -191,9 +191,9 @@ class App extends React.Component {
     const { location } = this.props
     return (
       <>
-        <Switch>
-          <Redirect from="/:url*(/+)" to={location.pathname.slice(0, -1)} />
-          <Route exact path="/home" component={Home} />
+        <Routes>
+          <Navigate from="/:url*(/+)" to={location.pathname.slice(0, -1)} />
+          <Route exact path="/home" element={Home} />
           <Route
             exact
             path="/signin"
@@ -209,27 +209,27 @@ class App extends React.Component {
             path="/signin/**/*"
             render={() => <SignIn {...this.props} authed={this.isAuthed()} />}
           />
-          <Route exact path="/signout" component={SignOut} />
-          <Route exact path="/signout/*" component={SignOut} />
-          <Route exact path="/signout/**/*" component={SignOut} />
-          <Route exact path="/createuser" component={CreateUser} />
-          <Route exact path="/createuser/*" component={CreateUser} />
-          <Route exact path="/createuser/**/*" component={CreateUser} />
+          <Route exact path="/signout" element={SignOut} />
+          <Route exact path="/signout/*" element={SignOut} />
+          <Route exact path="/signout/**/*" element={SignOut} />
+          <Route exact path="/createuser" element={CreateUser} />
+          <Route exact path="/createuser/*" element={CreateUser} />
+          <Route exact path="/createuser/**/*" element={CreateUser} />
 
-          <Route exact path="/pwreset" component={PasswordReset} />
-          <Route path="/pwreset/*" component={PasswordReset} />
-          <Route exact path="/pwresetinit" component={PasswordResetInit} />
+          <Route exact path="/pwreset" element={PasswordReset} />
+          <Route path="/pwreset/*" element={PasswordReset} />
+          <Route exact path="/pwresetinit" element={PasswordResetInit} />
           <Route
             exact
             path="/pwresetinit/done"
-            component={PasswordResetInitDone}
+            element={PasswordResetInitDone}
           />
-          <Route exact path="/tos" component={TOS} />
-          <Route exact path="/privacy" component={Privacy} />
-          <Route exact path="/profile" component={ProfileStats}></Route>
-          <Route exact path="/stats" component={ProfileMain}></Route>
-          <Route exact path="/quests" component={ProfileQuests}></Route>
-          <Route exact path="/settings" component={ProfileSettings}></Route>
+          <Route exact path="/tos" element={TOS} />
+          <Route exact path="/privacy" element={Privacy} />
+          <Route exact path="/profile" element={ProfileStats}></Route>
+          <Route exact path="/stats" element={ProfileMain}></Route>
+          <Route exact path="/quests" element={ProfileQuests}></Route>
+          <Route exact path="/settings" element={ProfileSettings}></Route>
 
           <InteriorHeader>
             <Route
@@ -268,28 +268,28 @@ class App extends React.Component {
                         authed={this.isAuthed()}
                         exact
                         path="/"
-                        component={Conversations}
+                        element={Conversations}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/conversations"
-                        component={Conversations}
+                        element={Conversations}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/account"
-                        component={Account}
+                        element={Account}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/integrate"
-                        component={Integrate}
+                        element={Integrate}
                       />
                     </Box>
                   </Flex>
@@ -301,10 +301,10 @@ class App extends React.Component {
               isLoading={this.isLoading()}
               path="/m/:conversation_id"
               authed={this.isAuthed()}
-              component={ConversationAdminContainer}
+              element={ConversationAdminContainer}
             />
           </InteriorHeader>
-        </Switch>
+        </Routes>
       </>
     )
   }

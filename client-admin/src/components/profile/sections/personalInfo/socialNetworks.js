@@ -1,10 +1,12 @@
 import {Grid, Box} from 'theme-ui';
-const facebookLogo = require('../../../../assets/fblogo.png');
-const twitterLogo = require('../../../../assets/twlogo.png');
-const googleLogo = require('../../../../assets/glogo.png');
-const metamaskLogo = require('../../../../assets/msklogo.png');
+//const facebookLogo = require('../../../../assets/fblogo.png');
+//const twitterLogo = require('../../../../assets/twlogo.png');
+//const googleLogo = require('../../../../assets/glogo.png');
+//const metamaskLogo = require('../../../../assets/msklogo.png');
 const SocialNetworks = ({facebook, twitter, google, metamask}) => {
     return (
+        <></>
+        /** 
         <Grid columns={4}>
             {facebook && <a target="_blank" href="#">
                 <img src={facebookLogo} />
@@ -19,6 +21,7 @@ const SocialNetworks = ({facebook, twitter, google, metamask}) => {
                 <img src={metamaskLogo} />
             </a>}
         </Grid>
+        */
     );
 };
 
