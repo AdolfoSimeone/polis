@@ -107,17 +107,17 @@ class CommentModeration extends React.Component {
             <Route
               exact
               path={`${match.url}`}
-              element={ModerateCommentsTodo}
+              element={<ModerateCommentsTodo />}
             />
             <Route
               exact
               path={`${match.url}/accepted`}
-              element={ModerateCommentsAccepted}
+              element={<ModerateCommentsAccepted />}
             />
             <Route
               exact
               path={`${match.url}/rejected`}
-              element={ModerateCommentsRejected}
+              element={<ModerateCommentsRejected />}
             />
           </Routes>
         </Box>

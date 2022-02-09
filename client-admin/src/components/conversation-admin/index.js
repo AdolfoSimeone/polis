@@ -103,24 +103,24 @@ class ConversationAdminContainer extends React.Component {
             <Route
               exact
               path={`${match.path}/`}
-              element={ConversationConfig}
+              element={<ConversationConfig />}
             />
             <Route
               exact
               path={`${match.path}/share`}
-              element={ShareAndEmbed}
+              element={<ShareAndEmbed />}
             />
-            <Route exact path={`${match.path}/reports`} element={Reports} />
+            <Route exact path={`${match.path}/reports`} element={<Reports />} />
             <Route
               path={`${match.path}/comments`}
-              element={ModerateComments}
+              element={<ModerateComments />}
             />
             <Route
               exact
               path={`${match.path}/stats`}
-              element={ConversationStats}
+              element={<ConversationStats />}
             />
-            {/* <Route exact path={`${match.path}/export`} element={DataExport} /> */}
+            {/* <Route exact path={`${match.path}/export`} element={<DataExport />} /> */}
           </Routes>
         </Box>
       </Flex>

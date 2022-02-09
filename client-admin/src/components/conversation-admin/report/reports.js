@@ -10,7 +10,7 @@ class Reports extends React.Component {
     return (
       <div>
         <Routes>
-          <Route exact element={ReportsList} />
+          <Route exact element={<ReportsList />} />
         </Routes>
       </div>
     )
@@ -20,5 +20,5 @@ class Reports extends React.Component {
 export default Reports
 
 //
-// <Route path=":report_id" element={Container}>
+// <Route path=":report_id" element={<Container />}>
 // </Route>

@@ -41,7 +41,7 @@
     "express": "^4.17.2",
     "file-loader": "~6.2.0",
     "glob": "^7.2.0",
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "gulp-cli": "^2.3.0",
     "gulp-s3": "github:pol-is/gulp-s3#master",
     "gulp-scp2": "^0.2.0",
@@ -51,7 +51,7 @@
     "request": "^2.88.2",
     "rimraf": "^3.0.2",
     "run-sequence": "~2.2.1",
-    "webpack": "^5.68.0",
+    "webpack": "5.24.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-middleware": "^5.3.1"

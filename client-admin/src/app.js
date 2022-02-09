@@ -193,7 +193,7 @@ class App extends React.Component {
       <>
         <Routes>
           <Navigate from="/:url*(/+)" to={location.pathname.slice(0, -1)} />
-          <Route exact path="/home" element={Home} />
+          <Route exact path="/home" element={<Home />} />
           <Route
             exact
             path="/signin"
@@ -209,27 +209,27 @@ class App extends React.Component {
             path="/signin/**/*"
             render={() => <SignIn {...this.props} authed={this.isAuthed()} />}
           />
-          <Route exact path="/signout" element={SignOut} />
-          <Route exact path="/signout/*" element={SignOut} />
-          <Route exact path="/signout/**/*" element={SignOut} />
-          <Route exact path="/createuser" element={CreateUser} />
-          <Route exact path="/createuser/*" element={CreateUser} />
-          <Route exact path="/createuser/**/*" element={CreateUser} />
+          <Route exact path="/signout" element={<SignOut />} />
+          <Route exact path="/signout/*" element={<SignOut />} />
+          <Route exact path="/signout/**/*" element={<SignOut />} />
+          <Route exact path="/createuser" element={<CreateUser />} />
+          <Route exact path="/createuser/*" element={<CreateUser />} />
+          <Route exact path="/createuser/**/*" element={<CreateUser />} />
 
-          <Route exact path="/pwreset" element={PasswordReset} />
-          <Route path="/pwreset/*" element={PasswordReset} />
-          <Route exact path="/pwresetinit" element={PasswordResetInit} />
+          <Route exact path="/pwreset" element={<PasswordReset />} />
+          <Route path="/pwreset/*" element={<PasswordReset />} />
+          <Route exact path="/pwresetinit" element={<PasswordResetInit />} />
           <Route
             exact
             path="/pwresetinit/done"
-            element={PasswordResetInitDone}
+            element={<PasswordResetInitDone />}
           />
-          <Route exact path="/tos" element={TOS} />
-          <Route exact path="/privacy" element={Privacy} />
-          <Route exact path="/profile" element={ProfileStats}></Route>
-          <Route exact path="/stats" element={ProfileMain}></Route>
-          <Route exact path="/quests" element={ProfileQuests}></Route>
-          <Route exact path="/settings" element={ProfileSettings}></Route>
+          <Route exact path="/tos" element={<TOS />} />
+          <Route exact path="/privacy" element={<Privacy />} />
+          <Route exact path="/profile" element={<ProfileStats />}></Route>
+          <Route exact path="/stats" element={<ProfileMain />}></Route>
+          <Route exact path="/quests" element={<ProfileQuests />}></Route>
+          <Route exact path="/settings" element={<ProfileSettings />}></Route>
 
           <InteriorHeader>
             <Route
@@ -268,28 +268,28 @@ class App extends React.Component {
                         authed={this.isAuthed()}
                         exact
                         path="/"
-                        element={Conversations}
+                        element={<Conversations />}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/conversations"
-                        element={Conversations}
+                        element={<Conversations />}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/account"
-                        element={Account}
+                        element={<Account />}
                       />
                       <PrivateRoute
                         isLoading={this.isLoading()}
                         authed={this.isAuthed()}
                         exact
                         path="/integrate"
-                        element={Integrate}
+                        element={<Integrate />}
                       />
                     </Box>
                   </Flex>
@@ -301,7 +301,7 @@ class App extends React.Component {
               isLoading={this.isLoading()}
               path="/m/:conversation_id"
               authed={this.isAuthed()}
-              element={ConversationAdminContainer}
+              element={<ConversationAdminContainer />}
             />
           </InteriorHeader>
         </Routes>
